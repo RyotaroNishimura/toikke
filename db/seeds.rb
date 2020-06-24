@@ -12,3 +12,4 @@ User.create!(name:  "example",
              password:              "example",
              password_confirmation: "example",
              admin: true)
+

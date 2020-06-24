@@ -1,13 +1,34 @@
-<div class="center umbtron">
-  <h1>What your recommend?</h1>
-  
-  <p>こんにちは、あなたのおすすめの本はなんですか？あなただけのおすすめの本棚を作りましょう。そして他の人のお勧めの本を知って興味を持ってみませんか？</p>
-  <div class="container">
-    <%= link_to "登録", signup_path, class: "btn btn-lg btn-primary" %>
-    <%= link_to "ログイン", login_path, class: "btn btn-lg btn-primary" %>
-    <%= link_to "ゲストログイン", "#", class: "btn btn-lg btn-primary" %>
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+      <section class="post_form">
+        <%= render 'shared/post_form' %>
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <h3>投稿一覧</h3>
+      <%= render 'shared/feed' %>
+    </div>
   </div>
-</div>
+<% else %>
+  <div class="center umbtron">
+    <h1>What your recommend?</h1>
+    
+    <p>こんにちは、あなたのおすすめの本はなんですか？あなただけのおすすめの本棚を作りましょう。そして他の人のお勧めの本を知って興味を持ってみませんか？</p>
+    <div class="container">
+      <%= link_to "登録", signup_path, class: "btn btn-lg btn-primary" %>
+      <%= link_to "ログイン", login_path, class: "btn btn-lg btn-primary" %>
+      <%= link_to "ゲストログイン", "#", class: "btn btn-lg btn-primary" %>
+    </div>
+  </div>
+
+<% end %>
 
 
 
