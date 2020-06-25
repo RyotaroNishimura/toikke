@@ -2,5 +2,5 @@
   <ol class="posts">
     <%= render @feed_items %>
   </ol>
-  <%= will_paginate @feed_item, params: { controller: :static_pages, action: :home }  %>
+  <%= will_paginate @feed_items, params: { controller: :static_pages, action: :home }  %>
 <% end %>
