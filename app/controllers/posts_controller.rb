@@ -15,14 +15,14 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    flash[:success] = "投稿削除"
+    flash[:success] = "投稿が削除されました"
     redirect_to request.referrer || root_url
   end
 
   private
 
     def post_params
-      params.require(:post).permit(:content)
+      params.require(:post).permit(:content, image)
     end
 
     def correct_user

@@ -4,15 +4,17 @@ class User < ApplicationRecord
   validates :name, presence: true, length: {maximum: 30}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: {maximum:30}, format: { with: VALID_EMAIL_REGEX }, uniqueness: true
-  has_many :posts, dependent: :destroy
-  has_secure_password
   validates :password, presence: true, length: {minimum:6}, allow_nil: true
 
+  has_secure_password
+
+  has_many :posts, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship", foreign_key:"follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-
   has_many :following, through: :active_relationships,source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+
+
 
 
   def User.digest(string)
@@ -30,9 +32,10 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 
-  def authenticated?(remember_token)
-    return false if remember_digest.nil?
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
   end
 
   def forget
