@@ -11,7 +11,7 @@ gem 'bootstrap-will_paginate', '1.0.0'
 gem 'mini_magick', '4.7.0'
 
 # Use postgresql as the database for Active Record
-gem 'pg', '>= 0.18', '< 2.0'
+
 gem 'bcrypt', '3.1.13'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
