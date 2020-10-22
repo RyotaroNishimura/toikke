@@ -17,6 +17,12 @@ RSpec.describe User, type: :model do
 
   end
 
+  contex "authenhticated?メソッド" do
+    it "ダイジェストがなかった時のauthenticated?のテスト" do
+      expect(user.authenticated?(:remember, '')).to eq false
+    end
+  end
+
   context "ユーザーのメールアドレスのフォーマットが正しくない時" do
     it "メールアドレスのvalidateが正しく機能しているか" do
       expect(FactoryBot.build(:user, email: 'user@example,com')).not_to be_valid
@@ -67,9 +73,4 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "ほかのブラウザでロウグインしていたらfalseを返す" do
-    it "ダイジェストがなかった時のauthenticated?のテスト" do
-      expect(user.authenticated?(:remember, '')).to eq false
-    end
-  end
 end
