@@ -23,6 +23,7 @@ default: &default
 
 development:
   <<: *default
+  adapter: sqlite3
   database: recomend_app_development
 
   # The specified database role being used to connect to postgres.
@@ -80,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
   database: recomend_app_production
   username: recomend_app
   password: <%= ENV['RECOMEND_APP_DATABASE_PASSWORD'] %>

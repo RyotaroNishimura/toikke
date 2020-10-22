@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "ようこそ"
+      flash[:success] = "recommend appへようこそ"
       redirect_back_or @user
     else
       render 'new'
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :passwrod_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
     def corrent_user

@@ -3,10 +3,30 @@
   "private": true,
   "dependencies": {
     "bootstrap": "3.4.1",
-    "jquery": "3.4.1"
+    "jquery": "^3.5.1"
   },
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/RyotaroNishimura/recomend_app.git",
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyotaroNishimura/recomend_app.git"
+  },
+  "license": "MIT",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "bugs": {
+    "url": "https://github.com/RyotaroNishimura/recomend_app/issues"
+  },
+  "homepage": "https://github.com/RyotaroNishimura/recomend_app#readme",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": ""
 }

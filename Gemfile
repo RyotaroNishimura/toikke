@@ -32,7 +32,6 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -41,9 +40,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', '1.4.6',require: false
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -51,6 +51,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   gem 'factory_bot_rails', '~> 4.11'
   gem 'sqlite3', '1.4.1'
+  gem 'rubocop-airbnb'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -69,6 +71,7 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+  gem 'webdrivers'
 
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
@@ -76,8 +79,8 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '1.1.4'
+  gem 'pg', '1.2.3'
 end
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'devise'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

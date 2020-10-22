@@ -1,6 +1,6 @@
-require 'rails_helper'
+//require 'rails_helper'
 
-RSpec.feature "Edit", type: :feature do
+RSpec.describe "Edit", type: :system do
   let(:user) { FactoryBot.create(:user) }
 
   scenario "successful edit" do

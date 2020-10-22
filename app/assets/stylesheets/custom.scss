@@ -1,8 +1,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {
-  padding-top: 180px;
+
+header {
+  color: black;
+}
+
+.recommend{
+  color: white;
+  font-size : 30px;
+
 }
 
 section {
@@ -19,7 +26,7 @@ textarea {
 
 .center h1 {
   margin-bottom: 10px;
-  
+
 }
 
 h1{

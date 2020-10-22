@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { create(:user) }
 
-  context "ユーザーが有効であるとき" do
+  context "バリデーション" do
 
     it '名前とメールアドレスとパスワードがあれば登録できる' do
       expect(user).to be_valid

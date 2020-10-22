@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "スタティックページ", type: :feature do
+RSpec.describe "スタティックページ", type: :system do
 
   describe "ホームページ" do
 
