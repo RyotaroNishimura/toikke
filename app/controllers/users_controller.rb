@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "プロフィールのアプデートに成功しました"
+      flash[:success] = "プロフィールのアップデートに成功しました"
       redirect_to @user
     else
       render 'edit'
@@ -41,9 +41,21 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "ユーザーを削除しました"
-    redirect_to users_url
+    @user = User.find(params[:id])
+    # 管理者ユーザーの場合
+    if current_user.admin?
+      @user.destroy
+      flash[:success] = "ユーザーを削除しました"
+      redirect_to root_url
+      # 管理者ユーザーではないが、自分のアカウントの場合
+    elsif current_user?(@user)
+      @user.destroy
+      flash[:success] = "自分のアカウントを削除しました"
+      redirect_to root_url
+    else
+      flash[:danger] = "他人のアカウントは削除できません"
+      redirect_to root_url
+    end
   end
 
   def following
@@ -68,7 +80,10 @@ class UsersController < ApplicationController
 
     def corrent_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      if !current_user?(@user)
+        flash[:danger] = "このページへはアクセスできません"
+        redirect_to(root_url)
+      end
     end
 
     def admin_user
