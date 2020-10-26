@@ -2,6 +2,39 @@ require 'rails_helpler'
 
 RSpec.decribe "Users", type: :system do
   let!(:user) { create(:user) }
+  let!(:admin_user) { create(:user, :admin) }
+
+  describe "ユーザー一覧ページ" do
+    context "管理者ユーザーの場合" do
+      it "ぺージネーション、自分以外のユーザーの削除ボタンが表示されること" do
+        create_list(:user, 30)
+        login_for_system(admin_user)
+        visit users_path
+        expect(page).to have_css "div.pagination"
+        User.paginate(page: 1).each do |u|
+          expect(page).to have_link u.name, href: user_path(u)
+          expect(page).to have_content "#{u.name} | 削除" unless u == admin_user
+        end
+      end
+    end
+
+    context "管理者ユーザー以外の場合" do
+      it "ぺージネーション、自分のアカウントのみ削除ボタンが表示されること" do
+        create_list(:user, 30)
+        login_for_system(user)
+        visit users_path
+        expect(page).to have_css "div.pagination"
+        User.paginate(page: 1).each do |u|
+          expect(page).to have_link u.name, href: user_path(u)
+          if u == user
+            expect(page).to have_content "#{u.name} | 削除"
+          else
+            expect(page).not_to have_content "#{u.name} | 削除"
+          end
+        end
+      end
+    end
+  end
 
   describe "新規登録ページ" do
     before do
@@ -39,22 +72,68 @@ RSpec.decribe "Users", type: :system do
     end
   end
 
-  describe "自分のプロフィールページ" do
+  describe "プロフィールページ" do
     context "ページレイアウト" do
       before do
+        login_for_system(user)
         visit user_path(user)
       end
 
       it "「自分のプロフィール」の文字列が存在することを確認" do
-        expect(page).to have_content ''
+        expect(page).to have_content 'プロフィール'
       end
 
       it "正しいタイトルが表示されることを確認" do
-        expect(page).to have_title full_title('')
+        expect(page).to have_title full_title('プロフィール')
       end
 
       it "ユーザー情報が表示されることを確認" do
         expect(page).to have_content user.name
+      end
+    end
+
+    it "プロフィール編集ページへのリンクが表示されていることを確認" do
+      expect(page).to have_link 'プロフィール編集', href: edit_user_path(user)
+    end
+  end
+
+  describe "プロフィール編集ページ" do
+    before do
+      login_for_system(user)
+      visit user_path(user)
+      click_link "プロフィール編集"
+    end
+
+    context "ページレイアウト" do
+      it "正しいタイトルが表示されることを確認" do
+        expect(page).to have_title full_title('プロフィール編集')
+      end
+    end
+
+    it "有効なプロフィール更新を行うと、更新成功のフラッシュが表示されること" do
+      fill_in "ユーザー名", with: "Edit Example User"
+      fill_in "メールアドレス", with: "edit-user@example.com"
+      click_button "変更を更新"
+      expect(page).to have_content "プロフィールのアップデートに成功しました"
+      expect(user.reload.name).to eq "Edit Example User"
+      expect(user.reload.email).to eq "edit-user@example.com"
+    end
+
+    it "無効なプロフィール更新をしようとすると、適切なエラーメッセージが表示されること" do
+      fill_in "ユーザー名", with: ""
+      fill_in "メールアドレス", with: ""
+      click_button "変更を更新"
+      expect(page).to have_content 'Nameを入力してください'
+      expect(page).to have_content 'Emailを入力してください'
+      expect(page).to have_content 'Emailは不正な値です'
+      expect(user.reload.email).not_to eq ""
+    end
+
+    context "アカウント削除処理", js: true do
+      it "正しく削除できること" do
+        click_link "アカウントを削除する"
+        page.driver.browser.switch_to.alert.accept
+        expect(page).to have_content "自分のアカウントを削除しました"
       end
     end
   end

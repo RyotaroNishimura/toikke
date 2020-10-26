@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_06_26_031223) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "remember_digest"
-    t.boolean "admin"
+    t.boolean "admin", default: false
     t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
