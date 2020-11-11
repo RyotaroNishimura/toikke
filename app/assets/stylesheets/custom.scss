@@ -178,3 +178,52 @@ span.image {
   padding: 0;
 }
 
+//新しい投稿を作るボタン//
+.btn-record {
+  margin-top: 3em;
+}
+
+.input-need{
+  color: red;
+  font-size: 13px;
+}
+
+.input-unneed {
+  font-size: 13px;
+}
+
+//投稿個別ページ//
+.post-user-name {
+  display: inline-block;
+}
+
+h2.post-name {
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+
+.post-price {
+  margin-top: 30px;
+}
+
+.post-info {
+  h5 {
+    font-size: 16px;
+    display: inline-block;
+  }
+  h4 {
+    font-size: 20px;
+    display: inline-block;
+  }
+}
+
+.change-post {
+  display: inline-block;
+}
+
+.edit-post .delete-post {
+  font-size: 15px;
+}

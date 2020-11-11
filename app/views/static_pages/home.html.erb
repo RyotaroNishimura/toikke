@@ -1,19 +1,11 @@
 <% if logged_in? %>
   <div class="row">
-    <aside class="col-md-4">
-      <section class="user_info">
-        <%= render 'shared/user_info' %>
-      </section>
-      <section class="stats">
-        <%= render 'shared/stats' %>
-      </section>
-      <section class="post_form">
-        <%= render 'shared/post_form' %>
-      </section>
-    </aside>
-    <div class="col-md-8">
-      <h3>投稿一覧</h3>
+    <div class="col-md-9>"
+      <h3>みんなの本 (<%=@feed_items.count %>)</h3>
       <%= render 'shared/feed' %>
+    </div>
+    <div class="col-md-3">
+      <p><%= link_to "新しい投稿を作る", new_post_path, class: "btn btn-primary btn-lg btn-record" %></p>
     </div>
   </div>
 <% else %>

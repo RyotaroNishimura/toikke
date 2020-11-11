@@ -23,3 +23,13 @@ User.create!(name:  "example",
               password_confirmation: password)
 end
 
+10.times do |n|
+  Post.create!(name: Faker::Post.post,
+               title: "七つの習慣",
+               category: "政治",
+               price: 1500,
+               popularity: 5,
+               content: "初めて本を紹介した",
+               user_id: 1)
+end
+

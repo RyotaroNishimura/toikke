@@ -1,0 +1,20 @@
+<% provide(:title, "#{@post.title}") %>
+<div class="row">
+  <h2 class="post-title"><%= @post.title %></h2>
+  <div class="change-post">
+    <% if current_user == @post.user %>
+      <%= link_to "編集", edit_post_path(@post), class: 'edit-post' %>
+    <% end %>
+    <% if current_user.admin? || (current_user == @post.user) %>
+      <%= link_to "削除", post_path(@post), method: :delete, class: 'delete-post',
+                                      data: { confirm: "本当に削除しますか？" } %>
+    <% end %>
+  </div>
+  <h4><%= @post.content %></h4>
+  <h4 class="post-category">カテゴリー：<%= @post.category %> </h4>
+  <h4 class="post-price">値段：<%= @post.price %> 円</h4>
+  <div class="post-info">
+    <h5>人気度：</h5><h4><%= @post.popularity %></h4>
+  </div>
+</div>
+

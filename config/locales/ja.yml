@@ -19,6 +19,13 @@ ja:
           sex: 性別
           created_at: 登録日時
           updated_at: 更新日時
+        post:
+          price: 値段
+          category: ジャンル
+          title: タイトル
+          content: オススメポイント
+          popularity: 人気度
+
   date:
     abbr_day_names:
     - 日
