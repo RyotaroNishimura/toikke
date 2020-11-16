@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
 
   end
 
-  contex "authenhticated?メソッド" do
+  context "authenhticated?メソッド" do
     it "ダイジェストがなかった時のauthenticated?のテスト" do
       expect(user.authenticated?(:remember, '')).to eq false
     end
@@ -46,7 +46,7 @@ RSpec.describe User, type: :model do
     FactoryBot.create(:user, email: "user1@example.com")
     user = FactoryBot.build(:user, email: "user1@example.com")
     user.valid?
-    expect(user.errors[:email]).to include("has already been taken")
+    expect(user.errors[:email]).to include("はすでに存在します")
   end
 
 
@@ -79,7 +79,6 @@ RSpec.describe User, type: :model do
       expect(user.following?(other_user)).to be_falsey
       user.follow(other_user)
       expect(user.following?(other_user)).to be_truthy
-      user.unfollow(other_user)
       expect(other_user.followed_by?(user)).to be_truthy
       user.unfollow(other_user)
       expect(user.following?(other_user)).to be_falsey

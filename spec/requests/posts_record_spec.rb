@@ -41,7 +41,6 @@ RSpec.describe "本の登録", type: :request do
       expect(response).to render_template('posts/new')
     end
   end
-  end
 
   context "ログインしていないユーザーの場合" do
     it "ログイン画面にリダイレクトすること" do

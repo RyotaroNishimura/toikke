@@ -9,7 +9,7 @@ RSpec.describe "投稿編集", type: :request do
     it "レスポンスが正常に表示されること" do
       get edit_post_path(post)
       login_for_request(user)
-      expect(response).to render_template('posts/edit')
+      expect(response).to redirect_to edit_post_url(post)
       patch post_path(post), params: { post: { title: "七つの習慣",
                                                category: "政治",
                                                price: 1500,
@@ -24,7 +24,7 @@ RSpec.describe "投稿編集", type: :request do
 
   context "ログインしていないユーザーの場合" do
     it "ログイン画面にリダイレクトすること" do
-      get edit_post_path(post)
+      get edit_post_path(toukou)
       expect(response).to have_http_status "302"
       expect(response).to redirect_to login_path
       patch post_path(post), params: { post: { title: "七つの習慣",
@@ -39,8 +39,8 @@ RSpec.describe "投稿編集", type: :request do
 
   context "別アカウントのユーザーの場合" do
     it "ホーム画面にリダイレクトすること" do
-      login_for_request(other_user)
-      get edit_post_path(post)
+      login_for_request(other_human)
+      get edit_post_path(toukou)
       expect(response).to have_http_status "302"
       expect(response).to redirect_to root_path
       patch post_path(post), params: { post: { title: "七つの習慣",

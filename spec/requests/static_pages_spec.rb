@@ -8,3 +8,4 @@ RSpec.describe "", type: :request do
       expect(response). have_http_status "200"
     end
   end
+end

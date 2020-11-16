@@ -1,6 +1,6 @@
-require 'rails_helpler'
+require 'rails_helper'
 
-RSpec.decribe "Users", type: :system do
+RSpec.describe "Users", type: :system do
   let!(:user) { create(:user) }
   let!(:admin_user) { create(:user, :admin) }
   let!(:other_user) { create(:user) }

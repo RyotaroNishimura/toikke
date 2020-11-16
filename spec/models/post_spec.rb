@@ -16,7 +16,7 @@ RSpec.describe Post, type: :model do
     it "説明が140文字以内であること" do
       post = build(:post, content: "あ" * 141)
       post.valid?
-      expect(post.errors[:description]).to include("は140文字以内で入力してください")
+      expect(post.errors[:content]).to include("は140文字以内で入力してください")
     end
 
     it "タイトルがなければ無効な状態であること" do

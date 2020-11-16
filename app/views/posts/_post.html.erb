@@ -1,16 +1,11 @@
 <li id="post-<%= post.id %>">
-  <%= link_to post.user %>
-  <span class="title">タイトル<%= link_to post.title, post_path(post) %></span>
-  <span class="category">カテゴリー<%= post.category %></span>
-  <span class="price">値段<%= post.price %></span>
+  <span class="title">タイトル<%= link_to post.title, post_path(post) %></span><br>
+  <span class="category">カテゴリー<%= post.category %></span><br>
+  <span class="price">値段<%= post.price %></span><br>
   <span class="popularity">人気度<%= post.popularity %></span><br>
   <span class="content">詳細<%= post.content %></span>
   <span class="timestamp">
-    投稿 <%= time_ago_in_words(post.created_at) %> ago.
-    <% if current_user?(post.user) %>
-      <%= link_to "削除", post, method: :delete,
-      data: { confirm: "削除しますか?" } %>
-    <% end %>
+    投稿 <%= time_ago_in_words(post.created_at) %> 前に投稿
   </span>
   <% if current_user.admin? || (current_user == post.user) %>
     <%= link_to "削除", post_path(post), method: :delete,

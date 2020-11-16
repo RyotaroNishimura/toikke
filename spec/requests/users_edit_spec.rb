@@ -11,8 +11,8 @@ RSpec.describe "プロフィール編集", type: :request do
       expect(response).to render_template('users/edit')
       patch user_path(user), params: { user: { name: "Example User",
                                                email: "user@example.com",
-                                               password { "password" }
-                                               password_confirmation  { "password" } } }
+                                               password: "password",
+                                               password_confirmation: "password" } }
       redirect_to user
       follow_redirect!
       expect(response).to render_template('users/show')
@@ -31,5 +31,6 @@ RSpec.describe "プロフィール編集", type: :request do
       expect(response).to have_http_status "302"
       expect(response).to redirect_to login_path
     end
+  end
 end
 

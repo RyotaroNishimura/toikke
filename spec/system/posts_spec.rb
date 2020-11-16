@@ -80,6 +80,7 @@ RSpec.describe "Posts", type: :system do
         page.driver.browser.switch_to.alert.accept
         expect(page).to have_content '投稿が削除されました'
       end
+    end
   end
 
   describe "料理編集ページ" do

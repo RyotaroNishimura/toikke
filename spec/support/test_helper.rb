@@ -10,8 +10,8 @@ end
 
 def login_for_system(user)
   visit login_path
-  fill_in "user_email", with: user.email
-  fill_in "user_password", with: user.password
+  fill_in "session[email]", with: user.email
+  fill_in "session[password]", with: user.password
   click_button "ログイン"
 end
 
