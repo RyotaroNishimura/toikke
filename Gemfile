@@ -40,7 +40,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '1.4.6',require: false
+gem 'bootsnap', '1.4.6', require: false
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'faker'
@@ -64,7 +64,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'factory_bot_rails', '~> 4.11'
   gem 'spring-commands-rspec'
-
 end
 
 group :test do
@@ -74,8 +73,8 @@ group :test do
   gem 'webdrivers'
 
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
-  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'shoulda-matchers',
+  git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
 
 group :production do

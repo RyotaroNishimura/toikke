@@ -2,12 +2,12 @@ require "rails_helper"
 
 RSpec.describe "投稿個別ページ", type: :request do
   let!(:user) { create(:user) }
-  let!(:post) { create(:post, user: user) }
+  let!(:new_post) { create(:post, user: user) }
 
   context "認可されたユーザーの場合" do
     it "レスポンスが正常に表示されること" do
       login_for_request(user)
-      get post_path(post)
+      get post_path(new_post)
       expect(response).to have_http_status "200"
       expect(response).to render_template('posts/show')
     end
@@ -15,7 +15,7 @@ RSpec.describe "投稿個別ページ", type: :request do
 
   context "ログインしていないユーザーの場合" do
     it "ログイン画面にリダイレクトすること" do
-      get post_path(post)
+      get post_path(new_post)
       expect(response).to have_http_status "302"
       expect(response).to redirect_to login_path
     end

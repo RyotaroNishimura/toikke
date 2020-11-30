@@ -4,7 +4,7 @@ RSpec.describe "ユーザーの削除", type: :request do
   let!(:admin_user) { create(:user, :admin) }
   let!(:user) { create(:user) }
   let!(:other_user) { create(:user) }
-  let!(:post) { create(:post, user: user) }
+  let!(:new_post) { create(:post, user: user) }
 
   context "管理者ユーザーの場合" do
     it "ユーザーを削除後、ユーザー一覧ページにリダイレクト" do
@@ -47,12 +47,12 @@ RSpec.describe "ユーザーの削除", type: :request do
     end
   end
 
-  context "料理が紐づくユーザーを削除した場合" do
+  context "投稿が紐づくユーザーを削除した場合" do
     it "ユーザーと同時に紐づく料理も削除される" do
       login_for_request(user)
       expect {
         delete user_path(user)
-      }.to change(Dish, :count).by(-1)
+      }.to change(Post, :count).by(-1)
     end
   end
 end

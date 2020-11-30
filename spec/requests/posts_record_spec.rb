@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "本の登録", type: :request do
   let!(:user) { create(:user) }
-  let!(:post) { create(:post, user: user) }
+  let!(:new_post) { create(:post, user: user) }
 
   context "ログインしているユーザーの場合" do
     before do
@@ -18,25 +18,23 @@ RSpec.describe "本の登録", type: :request do
 
     it "有効な投稿データで登録できること" do
       expect {
-        post posts_path, params: { post: { name: "七つの習慣",
-                                            category: "政治",
-                                            price: 1500,
-                                            popularity: 5,
-                                            content: "初めて本を紹介した"
-                                            } }
+        post posts_path, params: {
+          post: {
+            title: "七つの習慣", category: "政治", price: 1500, popularity: 5, content: "この本は私が大学生の頃に読んだ本です"
+          }
+        }
       }.to change(Post, :count).by(1)
       follow_redirect!
-      expect(response).to render_template('posts/show')
+      expect(response).to render_template('static_pages/home')
     end
 
     it "無効な投稿データでは登録できないこと" do
       expect {
-        post posts_path, params: { post: { name: "",
-                                            category: "政治",
-                                            price: 150,
-                                            popularity: 5,
-                                            content: "初めて本を紹介した"
-                                            } }
+        post posts_path, params: {
+          post: {
+            title: "", category: "政治", price: 150, popularity: 5, content: "この本は私が大学生の頃に読んだ本です"
+          }
+        }
       }.not_to change(Post, :count)
       expect(response).to render_template('posts/new')
     end

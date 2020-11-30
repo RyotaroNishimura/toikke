@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create!(name:  "example",
+User.create!(name:  "山田 太郎",
              email: "example@example.com",
              password:              "example",
              password_confirmation: "example",
@@ -24,7 +24,8 @@ User.create!(name:  "example",
 end
 
 10.times do |n|
-  Post.create!(name: Faker::Post.post,
+  Post.create!(
+               user_id: 1,
                title: "七つの習慣",
                category: "政治",
                price: 1500,

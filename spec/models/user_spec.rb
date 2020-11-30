@@ -1,21 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   let(:user) { create(:user) }
   let!(:other_user) { create(:user) }
 
   context "バリデーション" do
-
     it '名前とメールアドレスとパスワードがあれば登録できる' do
       expect(user).to be_valid
     end
 
-    it  'メールアドレスが空白の場合' do
+    it 'メールアドレスが空白の場合' do
       user.email = ""
       expect(user).not_to be_valid
     end
-
   end
 
   context "authenhticated?メソッド" do
@@ -49,27 +46,26 @@ RSpec.describe User, type: :model do
     expect(user.errors[:email]).to include("はすでに存在します")
   end
 
-
   it "パスワードが空白になってないか" do
     user.password = user.password_confirmation = 'a' * 6
     expect(user).to be_valid
 
     user.password = user.password_confirmation = '' * 6
-    expect(user).to_not be_valid
+    expect(user).not_to be_valid
   end
 
   describe "パスワードの長さ" do
     context "パスワードが6桁の時" do
       it "有効である" do
-        user = FactoryBot.build(:user,password: "a" * 6, password_confirmation: "a" * 6)
+        user = FactoryBot.build(:user, password: "a" * 6, password_confirmation: "a" * 6)
         expect(user).to be_valid
       end
     end
 
     context "パスワードが5桁の時" do
       it "無効である" do
-        user = FactoryBot.build(:user, password: "a" * 5,  password_confirmation: "a" * 5)
-        expect(user).to_not be_valid
+        user = FactoryBot.build(:user, password: "a" * 5, password_confirmation: "a" * 5)
+        expect(user).not_to be_valid
       end
     end
   end
