@@ -8,6 +8,7 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
       models:
         user: ユーザー
+        comment: コメント
       attributes:
         user:
           id: ID
@@ -16,7 +17,6 @@ ja:
           password: パスワード
           password_confirmation: パスワード(確認)
           introduction: 自己紹介
-          sex: 性別
           created_at: 登録日時
           updated_at: 更新日時
         post:
@@ -25,6 +25,10 @@ ja:
           title: タイトル
           content: オススメポイント
           popularity: 人気度
+        comment:
+          user_id: コメント投稿者のID
+          post_id: コメントされた投稿のID
+          content: コメント
 
   date:
     abbr_day_names:

@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "投稿", type: :system do
   let!(:user) { create(:user) }
+  let!(:other_user) { create(:user) }
   let!(:post) { create(:post, user: user) }
+  let!(:comment) { create(:comment, user_id: user.id, post: post) }
 
   describe "本の登録ページ" do
     before do
@@ -134,6 +136,32 @@ RSpec.describe "投稿", type: :system do
         click_on '削除'
         page.driver.browser.switch_to.alert.accept
         expect(page).to have_content '投稿が削除されました'
+      end
+    end
+
+    context "コメントの登録＆削除" do
+      it "自分の料理に対するコメントの登録＆削除が正常に完了すること" do
+        login_for_system(user)
+        visit post_path(post)
+        fill_in "comment_content", with: "めっちゃ面白いじゃん"
+        click_button "コメント"
+        within find("#comment-#{Comment.last.id}") do
+          expect(page).to have_selector 'span', text: user.name
+          expect(page).to have_selector 'span', text: 'めっちゃ面白いじゃん'
+        end
+        expect(page).to have_content "コメントを追加しました!"
+        click_link "削除", href: comment_path(Comment.last)
+        expect(page).to have_content "コメントを削除しました"
+      end
+
+      it "別ユーザーの料理のコメントには削除リンクが無いこと" do
+        login_for_system(other_user)
+        visit post_path(post)
+        within find("#comment-#{comment.id}") do
+          expect(page).to have_selector 'span', text: user.name
+          expect(page).to have_selector 'span', text: comment.content
+          expect(page).not_to have_link '削除', href: post_path(post)
+        end
       end
     end
   end
