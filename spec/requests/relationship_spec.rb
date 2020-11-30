@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "ユーザーフォロー機能", type: :request do
   let(:user) { create(:user) }
+  let!(:other_user) { create(:user) }
 
   context "ログインしている場合" do
     before do

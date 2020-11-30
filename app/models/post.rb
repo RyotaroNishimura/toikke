@@ -1,9 +1,10 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :favorites, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
 
   validates :user_id, presence: true
-  validates :content, allow_nil: true, length: {maximum: 140}
+  validates :content, allow_nil: true, length: { maximum: 140 }
   validates :popularity,
             :numericality => {
               :only_interger => true,

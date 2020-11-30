@@ -1,5 +1,8 @@
+<% @post = post  %>
+
 <li id="post-<%= post.id %>">
-  <span class="title">タイトル<%= link_to post.title, post_path(post) %></span><br>
+  <span class="title"><%= link_to post.title, post_path(post) %></span><br>
+  <%= render 'users/favorite_form' %>
   <span class="category">カテゴリー<%= post.category %></span><br>
   <span class="price">値段<%= post.price %></span><br>
   <span class="popularity">人気度<%= post.popularity %></span><br>
@@ -12,3 +15,5 @@
                        data: { confirm: "本当に削除しますか？" } %>
   <% end %>
 </li>
+
+

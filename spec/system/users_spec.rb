@@ -1,9 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :system do
+RSpec.describe "ユーザー", type: :system do
   let!(:user) { create(:user) }
   let!(:admin_user) { create(:user, :admin) }
   let!(:other_user) { create(:user) }
+  let!(:post) { create(:post, user: user) }
+  let!(:other_post) { create(:post, user: other_user) }
 
   describe "ユーザー一覧ページ" do
     context "管理者ユーザーの場合" do
@@ -51,14 +53,15 @@ RSpec.describe "Users", type: :system do
         expect(page).to have_title full_title('新規登録')
       end
     end
+
     context "ユーザー登録処理" do
       it "有効なユーザーでユーザー登録を行うとユーザー登録成功のフラッシュが表示されること" do
         fill_in "名前", with: "Example User"
         fill_in "メールアドレス", with: "user@example.com"
         fill_in "パスワード", with: "password"
         fill_in "パスワード(確認)", with: "password"
-        click_button "登録する"
-        expect(page).to have_content "クックログへようこそ！"
+        click_button "登録"
+        expect(page).to have_content "recommend appへようこそ"
       end
 
       it "無効なユーザーでユーザー登録を行うとユーザー登録失敗のフラッシュが表示されること" do
@@ -66,14 +69,14 @@ RSpec.describe "Users", type: :system do
         fill_in "メールアドレス", with: "user@example.com"
         fill_in "パスワード", with: "password"
         fill_in "パスワード(確認)", with: "pass"
-        click_button "登録する"
-        expect(page).to have_content "ユーザー名を入力してください"
-        expect(page).to have_content "パスワード(確認)とパスワードの入力が一致しません"
+        click_button "登録"
+        expect(page).to have_content "Nameを入力してください"
+        expect(page).to have_content "Password confirmationとPasswordの入力が一致しません"
       end
     end
   end
 
-  describe "プロフィールページ" do
+  describe "自分のページ" do
     context "ページレイアウト" do
       before do
         login_for_system(user)
@@ -92,30 +95,30 @@ RSpec.describe "Users", type: :system do
       it "ユーザー情報が表示されることを確認" do
         expect(page).to have_content user.name
       end
-    end
 
-    it "プロフィール編集ページへのリンクが表示されていることを確認" do
-      expect(page).to have_link 'プロフィール編集', href: edit_user_path(user)
-    end
-
-    it "投稿の件数が表示されていることを確認" do
-      expect(page).to have_content "投稿 (#{user.posts.count})"
-    end
-
-    it "投稿の情報が表示されていることを確認" do
-      Post.take(5).each do |post|
-        expect(page).to have_link post.name
-        expect(page).to have_content post.title
-        expect(page).to have_content post.category
-        expect(page).to have_content post.user.name
-        expect(page).to have_content post.price
-        expect(page).to have_content post.content
-        expect(page).to have_content post.popularity
+      it "プロフィール編集ページへのリンクが表示されていることを確認" do
+        expect(page).to have_link 'プロフィール編集', href: edit_user_path(user)
       end
-    end
 
-    it "料理のページネーションが表示されていることを確認" do
-      expect(page).to have_css "div.pagination"
+      it "投稿の件数が表示されていることを確認" do
+        expect(page).to have_content "投稿 (#{user.posts.count})"
+      end
+
+      it "投稿の情報が表示されていることを確認" do
+        Post.take(6).each do |post|
+          expect(page).to have_link post.name
+          expect(page).to have_content post.title
+          expect(page).to have_content post.category
+          expect(page).to have_content post.user.name
+          expect(page).to have_content post.price
+          expect(page).to have_content post.content
+          expect(page).to have_content post.popularity
+        end
+      end
+
+      it "投稿のページネーションが表示されていることを確認" do
+        expect(page).to have_css "div.pagination"
+      end
     end
 
     context "ユーザーのフォロー/アンフォロー処理", js: true do
@@ -129,13 +132,84 @@ RSpec.describe "Users", type: :system do
         expect(page).to have_button 'フォロー'
       end
     end
+
+    context "お気に入り登録/解除" do
+      before do
+        login_for_system(user)
+      end
+
+      it "投稿のお気に入り登録/解除ができること" do
+        expect(user.favorite?(post)).to be_falsey
+        user.favorite(post)
+        expect(user.favorite?(post)).to be_truthy
+        user.unfavorite(post)
+        expect(user.favorite?(post)).to be_falsey
+      end
+
+      it "トップページからお気に入り登録/解除ができること", js: true do
+        visit root_path
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{post.id}/create"
+        link.click
+        link = find('.unlike')
+        expect(link[:href]).to include "/favorites/#{post.id}/destroy"
+        link.click
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{post.id}/create"
+      end
+
+      it "ユーザー個別ページからお気に入り登録/解除ができること", js: true do
+        visit user_path(user)
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{post.id}/create"
+        link.click
+        link = find('.unlike')
+        expect(link[:href]).to include "/favorites/#{post.id}/destroy"
+        link.click
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{post.id}/create"
+      end
+
+      it "個別ページからお気に入り登録/解除ができること", js: true do
+        visit post_path(post)
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{post.id}/create"
+        link.click
+        link = find('.unlike')
+        expect(link[:href]).to include "/favorites/#{post.id}/destroy"
+        link.click
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{post.id}/create"
+      end
+
+      it "お気に入り一覧ページが期待通り表示されること" do
+        visit favorites_path
+        expect(page).not_to have_css ".favorite-post"
+        user.favorite(post)
+        user.favorite(other_post)
+        visit favorites_path
+        expect(page).to have_css ".favorite-post", count: 2
+        expect(page).to have_content post.name
+        expect(page).to have_content post.content
+        expect(page).to have_content "投稿者 #{user.name}"
+        expect(page).to have_link user.name, href: user_path(user)
+        expect(page).to have_content other_post.name
+        expect(page).to have_content other_post.content
+        expect(page).to have_content "投稿者 #{other_user.name}"
+        expect(page).to have_link other_user.name, href: user_path(other_user)
+        user.unfavorite(other_post)
+        visit favorites_path
+        expect(page).to have_css ".favorite-post", count: 1
+        expect(page).to have_content post.name
+      end
+    end
   end
 
   describe "プロフィール編集ページ" do
     before do
       login_for_system(user)
       visit user_path(user)
-      click_link "プロフィール編集"
+      click_link "プロフィール編集", match: :first
     end
 
     context "ページレイアウト" do
@@ -145,16 +219,20 @@ RSpec.describe "Users", type: :system do
     end
 
     it "有効なプロフィール更新を行うと、更新成功のフラッシュが表示されること" do
-      fill_in "ユーザー名", with: "Edit Example User"
+      fill_in "名前", with: "Edit Example User"
       fill_in "メールアドレス", with: "edit-user@example.com"
+      fill_in "パスワード", with: "Edit Example User"
+      fill_in "パスワード(確認)", with: "Edit Example User"
       click_button "変更を更新"
       expect(page).to have_content "プロフィールのアップデートに成功しました"
       expect(user.reload.name).to eq "Edit Example User"
       expect(user.reload.email).to eq "edit-user@example.com"
+      expect(user.reload.password).to eq "password"
+      expect(user.reload.password_confirmation).to eq "password"
     end
 
     it "無効なプロフィール更新をしようとすると、適切なエラーメッセージが表示されること" do
-      fill_in "ユーザー名", with: ""
+      fill_in "名前", with: ""
       fill_in "メールアドレス", with: ""
       click_button "変更を更新"
       expect(page).to have_content 'Nameを入力してください'

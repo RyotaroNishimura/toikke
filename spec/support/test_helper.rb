@@ -1,11 +1,11 @@
 include ApplicationHelper
+
 def is_logged_in?
   !session[:user_id].nil?
 end
 
 def login_for_request(user)
-  post login_path, params: { session: { email: user.email,
-                                        password: user.password } }
+  post login_path, params: { session: { email: user.email, password: user.password } }
 end
 
 def login_for_system(user)
@@ -16,9 +16,11 @@ def login_for_system(user)
 end
 
 def login_remember(user)
-  post login_path, params: { session: { email: user.email,
-                                        password: user.password,
-                                        remember_me: '1' } }
+  post login_path, params: {
+    session: {
+      email: user.email, password: user.password, remember_me: '1'
+    }
+  }
 end
 
 def current_user

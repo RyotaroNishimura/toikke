@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Posts", type: :system do
+RSpec.describe "投稿", type: :system do
   let!(:user) { create(:user) }
   let!(:post) { create(:post, user: user) }
 
@@ -27,25 +27,26 @@ RSpec.describe "Posts", type: :system do
         expect(page).to have_content '詳細'
       end
     end
+
     context "本の登録処理" do
       it "有効な情報で本の登録を行うと本の登録成功のフラッシュが表示されること" do
-        fill_in "タイトル", with: "七つの習慣"
-        fill_in "カテゴリー", with: "政治"
-        fill_in "値段", with: 1500
-        fill_in "人気度", with: 5
-        fill_in "詳細", with: "初めて本を紹介した"
-        click_button "投稿"
+        fill_in "post[title]", with: "七つの習慣"
+        fill_in "post[category]", with: "政治"
+        fill_in "post[price]", with: 1500
+        fill_in "post[popularity]", with: 5
+        fill_in "post[content]", with: "この本は私が大学生の頃に読んだ本です"
+        click_button "登録する"
         expect(page).to have_content "投稿が作られました!"
       end
 
       it "無効な情報で料理登録を行うと料理登録失敗のフラッシュが表示されること" do
-        fill_in "タイトル", with: ""
-        fill_in "カテゴリー", with: "政治"
-        fill_in "値段", with: 1500
-        fill_in "人気度", with: 5
-        fill_in "詳細", with: "初めて本を紹介した"
-        click_button "投稿"
-        expect(page).to have_content "タイトルを入力してください"
+        fill_in "post[title]", with: ""
+        fill_in "post[category]", with: "政治"
+        fill_in "post[price]", with: 1500
+        fill_in "post[popularity]", with: 5
+        fill_in "post[content]", with: "初めて本を紹介した"
+        click_button "登録する"
+        expect(page).to have_content "Titleを入力してください"
       end
     end
   end
@@ -83,7 +84,7 @@ RSpec.describe "Posts", type: :system do
     end
   end
 
-  describe "料理編集ページ" do
+  describe "投稿編集ページ" do
     before do
       login_for_system(user)
       visit post_path(post)
@@ -97,32 +98,33 @@ RSpec.describe "Posts", type: :system do
 
       it "入力部分に適切なラベルが表示されること" do
         expect(page).to have_content 'タイトル'
-        expect(page).to have_content '詳細'
         expect(page).to have_content 'カテゴリー'
         expect(page).to have_content '値段'
-        expect(page).to have_content '人気度[1~5]'
+        expect(page).to have_content '人気度'
+        expect(page).to have_content '詳細'
       end
     end
 
     context "本の更新処理" do
       it "有効な更新" do
-        fill_in "タイトル", with: "編集：七つの習慣"
-        fill_in "詳細", with: "編集：初めて本を紹介した"
-        fill_in "カテゴリー", with:"編集：政治"
-        fill_in "値段", with: 1500
-        fill_in "人気度", with: 1
+        fill_in "post[title]", with: "七つの週間"
+        fill_in "post[content]", with: "この本は私が大学生の頃に読んだ本です"
+        fill_in "post[category]", with: "政治"
+        fill_in "post[price]", with: 1500
+        fill_in "post[popularity]", with: 5
         click_button "更新する"
-        expect(page).to have_content "本の情報が更新されました！"
-        expect(post.reload.title).to eq "編集：七つの習慣"
-        expect(post.reload.content).to eq "編集：初めて本を紹介した"
+        expect(page).to have_content "本の情報が更新されました!"
+        expect(post.reload.title).to eq "七つの週間"
+        expect(post.reload.content).to eq "この本は私が大学生の頃に読んだ本です"
+        expect(post.reload.category).to eq "政治"
         expect(post.reload.price).to eq 1500
-        expect(post.reload.popularity).to eq 1
+        expect(post.reload.popularity).to eq 5
       end
 
       it "無効な更新" do
-        fill_in "タイトル", with: ""
+        fill_in "post[title]", with: ""
         click_button "更新する"
-        expect(page).to have_content 'タイトルを入力してください'
+        expect(page).to have_content 'Titleを入力してください'
         expect(post.reload.title).not_to eq ""
       end
     end

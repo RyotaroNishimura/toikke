@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :logged_in_user, only:[:create, :destroy]
-  before_action :correct_user, only: :destroy
+  before_action :logged_in_user
+  before_action :correct_user, only: [:edit, :update]
 
   def new
     @post = Post.new
@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = "投稿が作られました!"
-      redirect_to post_path(@post)
+      redirect_to root_url
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
       render 'posts/new'
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update_arributes(post_params)
+    if @post.update_attributes(post_params)
       flash[:success] = "本の情報が更新されました!"
       redirect_to @post
     else
@@ -54,8 +54,7 @@ class PostsController < ApplicationController
     end
 
     def correct_user
-      @post = current_user.posts.find_by(id:params[:id])
+      @post = current_user.posts.find_by(id: params[:id])
       redirect_to root_url if @post.nil?
     end
-
 end
