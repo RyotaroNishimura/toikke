@@ -6,6 +6,13 @@
         <div class= "recommend text-line-none text-center fixd-top">recommend app</div>
           <ul class="nav navbar-nav navbar-right">
               <% if logged_in? %>
+                <% if current_user.notification == true %>
+                  <li class="new_notification header-link">
+                <% else %>
+                  <li class="no_notification header-link">
+                <% end %>
+                <%= link_to notifications_path do %><span>通知</span><% end %>
+                </li>
                 <li><%= link_to "ホーム", root_path %></li>
                 <li><%= link_to 'お気に入り', favorites_path %></li>
                 <li><%= link_to "ユーザーの一覧", users_path %></li>
