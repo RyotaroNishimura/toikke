@@ -44,6 +44,7 @@ gem 'bootsnap', '1.4.6', require: false
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'faker'
+gem 'ransack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -3,7 +3,7 @@
     <div class= "header_box box-center">
       <div class= "header_box_logo">
         <nav class="navbar navbar-inverse">
-        <div class= "recommend text-line-none text-center fixd-top">recommend app</div>
+        <div class= "recommend text-line-none text-left fixd-top">recommend app</div>
           <ul class="nav navbar-nav navbar-right">
               <% if logged_in? %>
                 <% if current_user.notification == true %>
@@ -31,7 +31,7 @@
                 </li>
               <% else %>
                 <li><%= link_to "ログイン", login_path %></li>
-                <li><%= link_to "新規登録", signup_path %></li>
+                <li><%= link_to "登録", signup_path %></li>
                 <li><%= link_to "ゲストログイン", "#" %><li>
               <% end %>
           </ul>

@@ -31,7 +31,7 @@ end
                price: 1500,
                popularity: 5,
                content: "初めて本を紹介した",
-               user_id: 1)
+              )
 end
 
 users = User.all
