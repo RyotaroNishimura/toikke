@@ -165,4 +165,85 @@ RSpec.describe "投稿", type: :system do
       end
     end
   end
+
+  context "検索機能" do
+    context "ログインしている場合" do
+      before do
+        login_for_system(user)
+        visit root_path
+      end
+
+      it "ログイン後の各ページに検索窓が表示されていること" do
+        expect(page).to have_css 'form#post_search'
+        visit users_path
+        expect(page).to have_css 'form#post_search'
+        visit user_path(user)
+        expect(page).to have_css 'form#post_search'
+        visit edit_user_path(user)
+        expect(page).to have_css 'form#post_search'
+        visit following_user_path(user)
+        expect(page).to have_css 'form#post_search'
+        visit followers_user_path(user)
+        expect(page).to have_css 'form#post_search'
+        visit posts_path
+        expect(page).to have_css 'form#post_search'
+        visit post_path(post)
+        expect(page).to have_css 'form#post_search'
+        visit new_post_path
+        expect(page).to have_css 'form#post_search'
+        visit edit_post_path(post)
+        expect(page).to have_css 'form#post_search'
+      end
+
+      it "フィードの中から検索ワードに該当する結果が表示されること" do
+        create(:post, title: '七つの習慣', user: user)
+        create(:post, title: '七つの大罪', user: other_user)
+        create(:post, title: '最後の晩餐', user: user)
+        create(:post, title: '最後の約束', user: other_user)
+
+        fill_in 'q_name_cont', with: '七つ'
+        click_button '検索'
+        expect(page).to have_css 'h3', text: "”七つ”の検索結果：1件"
+        within find('.posts') do
+          expect(page).to have_css 'li', count: 1
+        end
+        fill_in 'q_name_cont', with: '最後'
+        click_button '検索'
+        expect(page).to have_css 'h3', text: "”最後”の検索結果：1件"
+        within find('.posts') do
+          expect(page).to have_css 'li', count: 1
+        end
+
+        user.follow(other_user)
+        fill_in 'q_name_cont', with: '七つ'
+        click_button '検索'
+        expect(page).to have_css 'h3', text: "”七つ”の検索結果：2件"
+        within find('.posts') do
+          expect(page).to have_css 'li', count: 2
+        end
+        fill_in 'q_name_cont', with: '最後'
+        click_button '検索'
+        expect(page).to have_css 'h3', text: "”最後”の検索結果：2件"
+        within find('.posts') do
+          expect(page).to have_css 'li', count: 2
+        end
+      end
+
+      it "検索ワードを入れずに検索ボタンを押した場合、投稿一覧が表示されること" do
+        fill_in 'q_name_cont', with: ''
+        click_button '検索'
+        expect(page).to have_css 'h3', text: "投稿一覧"
+        within find('.posts') do
+          expect(page).to have_css 'li', count: Post.count
+        end
+      end
+    end
+
+    context "ログインしていない場合" do
+      it "検索窓が表示されないこと" do
+        visit root_path
+        expect(page).not_to have_css 'form#post_search'
+      end
+    end
+  end
 end
