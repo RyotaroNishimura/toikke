@@ -7,7 +7,8 @@
     <%= stylesheet_link_tag 'application', media: 'all',  'data-turbolinks-track': 'reload' %>
 
      <%= javascript_include_tag 'application',  'data-turbolinks-track': 'reload' %>
-    <%= render 'layouts/shim' %>
+
+     <script src="https://kit.fontawesome.com/f7bcce5381.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -16,7 +17,7 @@
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
-      <%= render 'layouts/search' if logged_in? %>
+
 
       <%= yield %>
 

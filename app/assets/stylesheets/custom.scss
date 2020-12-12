@@ -1,19 +1,81 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
 
-
-header {
-  color: black;
+body {
+  font-family: "Kosugi Maru";  /* フォントを指定 */
 }
 
-.recommend{
-  color: white;
-  font-size : 30px;
+header{
+  height: 70px;
+}
 
+a {
+  color: #4f5050;
+  font-size: 15px;
+}
+
+.logo {
+  width: 30px;
+}
+
+.container {
+  width: 100%;
+}
+
+#recommend{
+  font-size : 30px;
+  position: sticky;
+}
+
+.head-logo {
+  padding-top: 30px;
+  font-size: 30px;
+  color: #13b1c0;
+}
+
+.badge {
+  background: #13b1c0;
+  padding: 10px 9px;
+}
+
+.fas {
+  color: #13b1c0;
+}
+
+input.font-awesome {
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
 }
 
 section {
   overflow: auto;
+}
+
+.image-poji {
+  background-image: image-url('records/book.jpg');
+  background-size: cover;
+  height: 300px;
+  width: 100%;
+}
+
+.image-poji p {
+  position: absolute;
+  left: 40px;
+  top: 40%px;
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.nohome-top span{
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  padding: 10px;
 }
 
 textarea {
@@ -37,11 +99,6 @@ p{
   margin-top: 60px;
 }
 
-.container{
-  margin-top: 250px;
-}
-
-
 
 
 
@@ -56,7 +113,39 @@ input {
 }
 
 
+.login  {
+  text-align: center;
+  font-size: 2.0em;
+  color: #13b1c0;
+}
 
+
+.login-login {
+  color: white;
+  font-size: 1.2em;
+  background-color: #13b1c0;
+}
+
+.login-mama {
+  margin-top: 20px;
+  text-align: center;
+  opacity: 0.5;
+}
+
+.form-control {
+  background-color: #f4f8fa;
+}
+
+.ac-donhave {
+  text-align: center;
+  margin-top: 80px;
+  opacity: 0.5;
+  font-size: 0.7;
+}
+
+.ac-donhave a {
+  color: #13b1c0;
+}
 
 
 #error_explanation {

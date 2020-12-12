@@ -1,23 +1,26 @@
 <% if logged_in? %>
-  <div class="row">
-    <div class="col-md-9">
-      <h3>みんなの本(<%=@feed_items.count %>)</h3>
-      <%= render 'shared/feed' %>
-    </div>
-    <div class="col-md-3">
-      <p><%= link_to "新しい投稿を作る", new_post_path, class: "btn btn-primary btn-lg btn-record" %></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h3>みんなの本(<%=@feed_items.count %>)</h3>
+        <%= render 'shared/feed' %>
+      </div>
+      <div class="col-md-3">
+        <p><%= link_to "新しい投稿を作る", new_post_path, class: "btn btn-primary btn-lg btn-record" %></p>
+      </div>
     </div>
   </div>
 <% else %>
-  <div class="center umbtron">
-    <h1>What your recommend?</h1>
-
-    <p>こんにちは、あなたのおすすめの本はなんですか？あなただけのおすすめの本棚を作りましょう。そして他の人のお勧めの本を知って興味を持ってみませんか？</p>
-    <div class="container">
-      <%= link_to "登録", signup_path, class: "btn btn-lg btn-primary" %>
-      <%= link_to "ログイン", login_path, class: "btn btn-lg btn-primary" %>
-      <%= link_to "ゲストログイン", "#", class: "btn btn-lg btn-primary" %>
+  <div class="container">
+    <div class="nohome-top">
+      <%= link_to "#" do %><span class="badge badge-pill">ゲストログイン</span><% end %>
     </div>
+    <div class="image-poji">
+      <p>まだ知らない誰かに<br>あなたのおすすめの本を紹介しよう</p>
+    </div>
+    <div>
+    </div>
+
   </div>
 
 <% end %>

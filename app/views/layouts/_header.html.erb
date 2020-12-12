@@ -1,42 +1,54 @@
 <header>
-  <div class= "main-font text-center">
-    <div class= "header_box box-center">
-      <div class= "header_box_logo">
-        <nav class="navbar navbar-inverse">
-        <div class= "recommend text-line-none text-left fixd-top">recommend app</div>
-          <ul class="nav navbar-nav navbar-right">
-              <% if logged_in? %>
-                <% if current_user.notification == true %>
-                  <li class="new_notification header-link">
-                <% else %>
-                  <li class="no_notification header-link">
-                <% end %>
-                <%= link_to notifications_path do %><span>通知</span><% end %>
+  <div class="container">
+    <div class="row">
+      <div id="recommend">
+        <%= link_to root_path do %><span class="head-logo">recommend book</span><% end %>
+        <nav class="nav navbar-nav navbar-right">
+          <% if logged_in? %>
+            <li>
+              <%= render 'layouts/search' %>
+            </li>
+            <% if current_user.notification == true %>
+              <li class="new_notification header-link">
+            <% else %>
+              <li class="no_notification header-link">
+            <% end %>
+            <%= link_to notifications_path do %>
+              <i class="fas fa-bell"></i>
+            <% end %>
+            </li>
+            <li>
+              <%= link_to favorites_path do %><i class="fas fa-heart"></i><% end %>
+            </li>
+            <li>
+              <%= link_to users_path do %><i class="fas fa-users"></i><% end %>
+            </li>
+            <li class= "dropdown">
+              <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
+              <i class="fas fa-user-circle"></i><b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to current_user do %><i class="fas fa-house-user"></i> マイページ<% end %>
                 </li>
-                <li><%= link_to "ホーム", root_path %></li>
-                <li><%= link_to 'お気に入り', favorites_path %></li>
-                <li><%= link_to "ユーザーの一覧", users_path %></li>
-                <li class= "dropdown">
-                  <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
-                  アカウント <b class="caret"></b>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><%= link_to "自分のページ", current_user %></li>
-                    <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
-                    <li class="divider"></li>
-                    <li>
-                      <%= link_to "ログアウト", logout_path, method: :delete %>
-                    </li>
-                  </ul>
+                <li>
+                  <%= link_to edit_user_path(current_user) do %><i class="fas fa-user-edit"></i> プロフィール編集<% end %>
                 </li>
-              <% else %>
-                <li><%= link_to "ログイン", login_path %></li>
-                <li><%= link_to "登録", signup_path %></li>
-                <li><%= link_to "ゲストログイン", "#" %><li>
-              <% end %>
-          </ul>
+                <li class="divider"><li>
+                <li>
+                  <%= link_to logout_path, method: :delete  do %><i class="fas fa-sign-out-alt"></i> ログアウト<% end %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li class="header-link">
+              <%= link_to login_path do %><span class="badge badge-pill">ログイン</span><% end %>
+            </li>
+            <li class="header-link">
+              <%= link_to signup_path do %><span class="badge badge-pill">登録</span><% end %>
+            </li>
+          <% end %>
         </nav>
-      </div>
     </div>
   </div>
 </header>
