@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container zentai">
   <h1 class="login">ログイン</h1>
   <div class= "row">
-    <div class= "col-md-6 col-md-offset-3">
+    <div class= "col-md-6 col-md-offset-3 section">
       <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
 
         <%= f.label :メールアドレス %>
@@ -19,9 +19,11 @@
           <% end %>
         </div>
       <% end %>
+
+      <div class="ac-donhave">
+        <%= link_to "アカウントをお持ちでない方はこちら", signup_path %>
+      </div>
     </div>
-    <div class="ac-donhave">
-      <%= link_to "アカウントをお持ちでない方はこちら", signup_path %>
-    </div>
+
   </div>
 </div>
