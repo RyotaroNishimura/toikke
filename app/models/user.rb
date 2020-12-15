@@ -31,6 +31,8 @@ class User < ApplicationRecord
 
   has_many :notifications, dependent: :destroy
 
+  mount_uploader :image, ImageUploader
+
 
 
   def User.digest(string)

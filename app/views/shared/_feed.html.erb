@@ -1,6 +1,12 @@
 <% if @feed_items.any? %>
-  <ol class="posts">
-    <%= render @feed_items %>
-  </ol>
-  <%= will_paginate @feed_items, params: { controller: :static_pages, action: :home }  %>
+<div class=" container">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="posts">
+        <%= render @feed_items %>
+      </div>
+      <%= will_paginate @feed_items, params: { controller: :static_pages, action: :home }  %>
+    </div>
+  </div>
+</div>
 <% end %>

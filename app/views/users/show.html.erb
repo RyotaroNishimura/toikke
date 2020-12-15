@@ -2,6 +2,13 @@
 <h3 class="title-profile">プロフィール</h3>
 <div class="row">
     <div class="col-md-4">
+      <div class="user-image-box">
+        <% if @user.image? %>
+          <%= image_tag @user.image.url, class:"profile_show_img" %>
+        <% else %>
+          <%= image_tag "/assets/default.jpg", class:"profile_show_img" %>
+        <% end %>
+      </div>
     </div>
     <div class="col-md-8">
       <h4 class="show-user-name"><%= @user.name %></h4>

@@ -1,12 +1,9 @@
 <% if logged_in? %>
-  <div class="container">
+  <div class="container zentai">
     <div class="row">
       <div class="col-md-9">
         <h3>みんなの本(<%=@feed_items.count %>)</h3>
         <%= render 'shared/feed' %>
-      </div>
-      <div class="col-md-3">
-        <p><%= link_to "新しい投稿を作る", new_post_path, class: "btn btn-primary btn-lg btn-record" %></p>
       </div>
     </div>
   </div>

@@ -1,27 +1,46 @@
 <% provide(:title, "#{@post.title}") %>
-<% @comments = @post.feed_comment(@post.id) %>
-<div class="row">
-  <%= render 'users/favorite_form' %>
-  <h2 class="post-title"><%= @post.title %></h2>
-  <div class="change-post">
-    <% if current_user == @post.user %>
-      <%= link_to "編集", edit_post_path(@post), class: 'edit-post' %>
-    <% end %>
-    <% if current_user.admin? || (current_user == @post.user) %>
-      <%= link_to "削除", post_path(@post), method: :delete, class: 'delete-post', data: {
-        confirm: "本当に削除しますか？"
-      } %>
-    <% end %>
-  </div>
-  <h4 class="post-content">詳細：<%= @post.content %></h4>
-  <h4 class="post-category">カテゴリー：<%= @post.category %></h4>
-  <h4 class="post-price">値段：<%= @post.price %> 円</h4>
-  <div class="post-info">
-    <h5>人気度：</h5><h4><%= @post.popularity %></h4>
-  </div>
-  <div class="comment">
-    <%= render "comments/feed_comments" %>
-    <%= render "comments/new" %>
+<div class="container-fluid zentai">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 section">
+      <% @comments = @post.feed_comment(@post.id) %>
+
+      <div class="change-post">
+        <% if current_user == @post.user %>
+          <div class="edit-post">
+            <%= link_to "編集", edit_post_path(@post) %>
+          </div>
+        <% end %>
+        <% if current_user.admin? || (current_user == @post.user) %>
+          <div class="delete-post">
+            <%= link_to "削除", post_path(@post), method: :delete, data: {
+            confirm: "本当に削除しますか？"
+            } %>
+          </div>
+        <% end %>
+      </div>
+
+      <h2 class="post-title"><%= @post.title %></h2>
+
+      <h4 class="post-category">カテゴリー：<%= @post.category %></h4>
+
+      <h4 class="post-price">値段：<%= @post.price %> 円</h4>
+
+      <div class="post-info">
+        <h5>人気度：</h5><h4><%= @post.popularity %></h4>
+      </div>
+
+      <h4 class="post-content">詳細：<%= @post.content %></h4>
+
+      <%= time_ago_in_words(@post.created_at) %>前
+    </div>
+
+    <div class="col-md-6 col-md-offset-3 under">
+      <div><%= render 'users/favorite_form' %></div>
+      <div class="comment">
+        <%= render "comments/feed_comments" %>
+        <%= render "comments/new" %>
+      </div>
+    </div>
   </div>
 </div>
 

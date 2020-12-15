@@ -99,6 +99,41 @@ p{
   margin-top: 60px;
 }
 
+/// プロフィールページ ////
+.user-image img {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.user-image-box {
+  margin-top: 0.5em;
+  margin-left: 1em;
+}
+
+.show-user-name {
+  display: inline-block;
+}
+
+.account-edit {
+  margin-top: 20px;
+}
+
+
+///プロフィール画像///
+.profile_img {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  object-fit: cover;
+}
+
+.profile_show_img{
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  object-fit: cover;
+}
 
 
 
@@ -214,6 +249,11 @@ input {
   }
 }
 
+.post-title {
+  color:  #13b1c0;
+  text-align: center;
+}
+
 aside {
   textarea {
     height: 100px;
@@ -226,6 +266,18 @@ span.image {
   input {
     border: 0;
   }
+}
+
+.post_nh {
+  text-align: center;
+}
+
+.zentai {
+ background-color: #f4f8fa;
+}
+
+.section {
+  background-color: #ffffff;
 }
 
 //フォロー、フォロワー数
@@ -253,6 +305,8 @@ span.image {
   margin-top: 3em;
 }
 
+
+//// 登録ページ ////
 .input-need{
   color: red;
   font-size: 13px;
@@ -279,7 +333,13 @@ h2.post-name {
   margin-top: 30px;
 }
 
+.post-category {
+  margin-top: 30px;
+}
+
+
 .post-info {
+  margin-top: 30px;
   h5 {
     font-size: 16px;
     display: inline-block;
@@ -290,12 +350,20 @@ h2.post-name {
   }
 }
 
+.post-content {
+  margin-top: 30px;
+}
+
 .change-post {
-  display: inline-block;
+  text-align: right;
 }
 
 .edit-post .delete-post {
   font-size: 15px;
+}
+
+.under {
+  margin-top: 30px;
 }
 
 //お気に入り
