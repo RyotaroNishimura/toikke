@@ -10,6 +10,15 @@ header{
   height: 70px;
 }
 
+.header-ul{
+  list-style-type: none;
+}
+
+.header-ul li {
+  display: inline-block;
+  margin-right: 6px;
+}
+
 a {
   color: #4f5050;
   font-size: 15px;
@@ -41,6 +50,7 @@ a {
 
 .fas {
   color: #13b1c0;
+  width: 30px;
 }
 
 input.font-awesome {
@@ -104,6 +114,10 @@ p{
   max-width: 100%;
   height: auto;
   box-sizing: border-box;
+}
+
+.profile {
+  margin: 30px;
 }
 
 .user-image-box {
