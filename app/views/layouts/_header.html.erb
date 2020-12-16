@@ -2,8 +2,9 @@
   <div class="container">
     <div class="row">
       <div id="recommend">
-        <%= link_to root_path do %><span class="head-logo">recommend book</span><% end %>
+        <%= link_to root_path do %><i class="head-logo">recommend book</i><% end %>
         <nav class="nav navbar-nav navbar-right">
+          <ul class="header-ul">
           <% if logged_in? %>
             <li>
               <%= render 'layouts/search' %>
@@ -13,16 +14,21 @@
             <% else %>
               <li class="no_notification header-link">
             <% end %>
+
             <%= link_to notifications_path do %>
               <i class="fas fa-bell"></i>
             <% end %>
+
             </li>
+
             <li>
               <%= link_to favorites_path do %><i class="fas fa-heart"></i><% end %>
             </li>
+
             <li>
               <%= link_to new_post_path do %><i class="fas fa-plus"></i><% end %>
             </li>
+
             <li class= "dropdown">
               <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
               <i class="fas fa-user-circle"></i><b class="caret"></b>
@@ -40,6 +46,8 @@
                 </li>
               </ul>
             </li>
+          </ul>
+
           <% else %>
             <li class="header-link">
               <%= link_to login_path do %><span class="badge badge-pill">ログイン</span><% end %>
@@ -49,6 +57,7 @@
             </li>
           <% end %>
         </nav>
+      </div>
     </div>
   </div>
 </header>
