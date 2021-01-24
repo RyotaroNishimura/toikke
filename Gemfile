@@ -9,6 +9,7 @@ gem 'bootstrap-sass', '3.4.1'
 gem 'will_paginate', '3.1.8'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'mini_magick', '4.7.0'
+gem 'therubyracer', platforms: :ruby
 
 # Use postgresql as the database for Active Record
 
