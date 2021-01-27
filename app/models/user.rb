@@ -9,6 +9,7 @@ class User < ApplicationRecord
     with: VALID_EMAIL_REGEX
   }, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :sex, presence: true
 
   has_secure_password
 

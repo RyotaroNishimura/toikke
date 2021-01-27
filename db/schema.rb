@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_04_003920) do
+ActiveRecord::Schema.define(version: 2021_01_26_124857) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "post_id"
@@ -49,8 +49,10 @@ ActiveRecord::Schema.define(version: 2020_12_04_003920) do
     t.string "image"
     t.text "title"
     t.integer "price"
-    t.string "category"
     t.integer "popularity"
+    t.string "adress"
+    t.integer "unnko"
+    t.integer "syoben"
     t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -75,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_12_04_003920) do
     t.boolean "admin", default: false
     t.string "image"
     t.boolean "notification", default: false
+    t.integer "sex"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

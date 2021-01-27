@@ -16,7 +16,6 @@ class Post < ApplicationRecord
             allow_nil: true
   validates :title, presence: true
   validates :price, presence: true
-  validates :category, presence: true
 
   def feed_comment(post_id)
     Comment.where("post_id = ?", post_id)
