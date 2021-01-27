@@ -1,0 +1,15 @@
+current directory: /Users/nishimuraryoutarou/My_forio/recomend_app/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/nishimuraryoutarou/.rbenv/versions/2.5.1/bin/ruby -I /Users/nishimuraryoutarou/.rbenv/versions/2.5.1/lib/ruby/site_ruby/2.5.0 -r ./siteconf20210126-27947-rlsxge.rb extconf.rb
+creating Makefile
+
+current directory: /Users/nishimuraryoutarou/My_forio/recomend_app/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/nishimuraryoutarou/My_forio/recomend_app/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/nishimuraryoutarou/My_forio/recomend_app/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20210126-27947-1la12hg/skiptrace/internal
