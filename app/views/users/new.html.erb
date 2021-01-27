@@ -12,8 +12,14 @@
         <%= f.label :email, "メールアドレス" %>
         <%= f.email_field :email, class:'form-control' %>
 
+        <%= f.label :sex, "性別" %>
+        <br>
+        <label><%= f.radio_button :sex, "1" %>男性</label>
+        <label><%= f.radio_button :sex, "2" %>女性</label>
+        <br>
+
         <%= f.label :password, "パスワード" %>
-        <%= f.password_field :password, class:'form-control' %>
+        <%= f.password_field :password, class: 'form-control' %>
 
         <%= f.label :password_confirmation, "パスワード(確認)" %>
         <%= f.password_field :password_confirmation, class:'form-control' %>
