@@ -110,46 +110,6 @@ p{
 }
 
 /// プロフィールページ ////
-.user-image img {
-  max-width: 100%;
-  height: auto;
-  box-sizing: border-box;
-}
-
-.profile {
-  margin: 30px;
-}
-
-.user-image-box {
-  margin-top: 0.5em;
-  margin-left: 1em;
-}
-
-.show-user-name {
-  display: inline-block;
-}
-
-.account-edit {
-  margin-top: 20px;
-}
-
-
-///プロフィール画像///
-.profile_img {
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
-  object-fit: cover;
-}
-
-.profile_show_img{
-  width: 100px;
-  height: 100px;
-  border-radius: 100px;
-  object-fit: cover;
-}
-
-
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
@@ -237,6 +197,21 @@ input {
   }
 }
 
+///投稿///
+
+.show_posts_img{
+  display: block;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+}
+
+.post-image {
+  margin: 40px 0 60px 0;
+  width: 500px;
+  height:300px;
+}
+
 .posts {
   list-style: none;
   padding: 0;
@@ -253,7 +228,7 @@ input {
     margin-left: 60px;
     img {
       display: block;
-      padding: 5px 0;
+      padding: 20px 0;
     }
   }
   .timestamp {
@@ -261,6 +236,18 @@ input {
     display: block;
     margin-left: 60px;
   }
+}
+
+.post_show_h{
+  font-weight: bold;
+  margin-top: 40px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+}
+
+.post_show_time {
+  padding-top:50px;
 }
 
 .post-title {
@@ -294,42 +281,6 @@ span.image {
   background-color: #ffffff;
 }
 
-//フォロー、フォロワー数
-.stats {
-  margin: 5px 0;
-}
-
-.user_avatars {
-  overflow: auto;
-  margin-top: 10px;
-  .gravatar {
-    margin: 1px 1px;
-  }
-  a {
-    padding: 0;
-  }
-}
-
-.users.follow {
-  padding: 0;
-}
-
-//新しい投稿を作るボタン//
-.btn-record {
-  margin-top: 3em;
-}
-
-
-//// 登録ページ ////
-.input-need{
-  color: red;
-  font-size: 13px;
-}
-
-.input-unneed {
-  font-size: 13px;
-}
-
 //投稿個別ページ//
 .post-user-name {
   display: inline-block;
@@ -341,16 +292,6 @@ h2.post-name {
   margin-bottom: 10px;
   display: inline-block;
 }
-
-
-.post-price {
-  margin-top: 30px;
-}
-
-.post-category {
-  margin-top: 30px;
-}
-
 
 .post-info {
   margin-top: 30px;
@@ -380,63 +321,29 @@ h2.post-name {
   margin-top: 30px;
 }
 
-//お気に入り
-.like-btn-unlike {
+
+
+//新しい投稿を作るボタン//
+.btn-record {
+  margin-top: 3em;
+}
+
+
+//// 登録ページ ////
+.input-need{
   color: red;
+  font-size: 13px;
 }
 
-.like-btn-like {
-  color: grey;
-}
-
-a.like, a.unlike {
-  text-decoration: none;
-}
-
-.favorites {
-  list-style: none;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-  }
-}
-
-.title-comment {
-  font-weight: bold;
-  font-size: 17px;
-}
-
-.comments {
-  list-style: none;
-  li {
-    font-size: 14px;
-    padding: 10px 0;
-    border-top: 1px solid;
-    .comment {
-      font-size: 16px;
-    }
-  }
-}
-
-.comment-create-at {
-  color: grey;
+.input-unneed {
+  font-size: 13px;
 }
 
 li.new_notification > a > span {
   color: red;
 }
 
-.notifications {
-  list-style: none;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid
-  }
-}
 
-.notification-message {
-  font-size: 16px;
-}
 
 .checkbox{
   display:block;

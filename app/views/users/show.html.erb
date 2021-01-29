@@ -1,6 +1,7 @@
 <% provide(:title, "プロフィール") %>
 <div class="container zentai">
   <div class="row">
+
     <div class="col-md-3 profile section">
       <div class="user-image-box">
         <% if @user.image? %>
@@ -9,8 +10,12 @@
           <%= image_tag "/assets/default.jpg", class:"profile_show_img" %>
         <% end %>
       </div>
-
-      <h4 class="show-user-name"><%= @user.name %></h4>
+      <h3 class="show-user-name"><%= @user.name %></h3>
+      <% if @user.sex == 1 %>
+        <h4>男性</h4>
+      <% else %>
+        <h4>女性</h4>
+      <% end %>
       <section class="stats">
         <%= render 'shared/stats' %>
       </section>
@@ -24,7 +29,7 @@
 
     <div class="col-md-8">
       <% if @user.posts.any? %>
-        <h3>投稿 (<%= @user.posts.count %>)</h3>
+        <h3>投稿 <%= @user.posts.count %></h3>
         <ol class="posts">
           <%= render @posts %>
         </ol>

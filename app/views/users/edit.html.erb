@@ -5,12 +5,15 @@
     <div class = "col-md-6 col-md-offset-3 section">
       <%= form_with(model: @user, local: true) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
+        <div class="u_i">
+          <% if @user.image? %>
+              <%= image_tag @user.image.url, class:"profile_img" %>
 
-        <% if @user.image? %>
-          <%= image_tag @user.image.url, class:"profile_img" %>
-        <% else %>
-          <%= image_tag "/assets/default.jpg", class:"profile_img" %>
-        <% end %>
+          <% else %>
+              <%= image_tag "/assets/default.jpg", class:"profile_img" %>
+          <% end %>
+        </div>
+
 
         <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
 
