@@ -27,12 +27,12 @@
       <%= render 'follow_form' if logged_in? %>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-7">
       <% if @user.posts.any? %>
-        <h3>投稿 <%= @user.posts.count %></h3>
-        <ol class="posts">
+        <h3 class="toukou_side">誰かのトイレを助けた数 <%= @user.posts.count %></h3>
+        <div class="posts">
           <%= render @posts %>
-        </ol>
+        </div>
         <%= will_paginate @posts %>
       <% end %>
     </div>
