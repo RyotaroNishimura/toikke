@@ -28,6 +28,9 @@ a {
   width: 30px;
 }
 
+.profile {
+  margin: 30px 0 0 40px;
+}
 .container {
   width: 100%;
 }
@@ -35,6 +38,32 @@ a {
 #recommend{
   font-size : 30px;
   position: sticky;
+}
+
+.toukou_side {
+  margin-left: 40px;
+}
+
+.oowaku {
+  padding-top: 20px;
+  padding-left: 20px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  height: 250px;
+  width:700px;
+
+}
+.title_us {
+  font-size:24px;
+  border-bottom: 1px solid #ddd;
+  color: #13b1c0;
+}
+
+.title_moji {
+  display: inline-block;
+  font-size:24px;
+  border-bottom: 1px solid #ddd;
+  color: #13b1c0;
 }
 
 .head-logo {
@@ -108,6 +137,24 @@ p{
   font-size: 0.8em;
   margin-top: 60px;
 }
+
+.adress_us {
+  margin-top: 18px;
+}
+
+.freeornot_us {
+  margin-top: 18px;
+}
+
+.unnko_us {
+  margin-top: 18px;
+}
+
+.timestamp_us {
+  margin-left:0;
+}
+
+
 
 /// プロフィールページ ////
 
@@ -321,6 +368,11 @@ h2.post-name {
   margin-top: 30px;
 }
 
+///投稿全体///
+.home_posts_img {
+  width: 200px;
+  height: 200px;
+}
 
 
 //新しい投稿を作るボタン//

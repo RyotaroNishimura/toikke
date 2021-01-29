@@ -1,17 +1,30 @@
 <% @post = post  %>
 <div id="post-<%= post.id %>">
-  <div class="section profile">
-    <div class="col-md-3">
-      <div class="card">
+  <div class="section oowaku">
+    <div class="col-md-5">
       <%= image_tag @post.image.url, class:"home_posts_img" %>
-      </div>
     </div>
+    <div class="col-md-7">
 
-    <span class="title"><%= link_to post.title, post_path(post) %></span><br>
+    <div class="title_us"><%= link_to post.title, post_path(post), class: "title_moji" %>のトイレ</div>
 
-    <span class="timestamp">
+    <% if @post.adress? %>
+      <h4 class="adress_us"><%= @post.adress %></h4>
+    <% end %>
+
+    <% if @post.freeornot == 1 %>
+      <h4 class="freeornot_us">無料で使用できます</h4>
+    <% else %>
+      <h4 class="freeornot_us">使用にお金がかかるかもしれません</h4>
+    <% end %>
+
+    <% if @post.unnko? %>
+      <h4 class="unnko_us">大便器の数は<%= @post.unnko %>つです</h4>
+    <% end %>
+
+    <div class="timestamp_us">
       <%= time_ago_in_words(post.created_at) %>前
-    </span>
+    </div>
 
     <% if current_user.admin? || (current_user == post.user) %>
       <%= link_to "削除", post_path(post), method: :delete,data: {
@@ -20,6 +33,7 @@
     <% end %>
 
     <%= render 'users/favorite_form' %>
+    </div>
 
   </div>
 </div>
