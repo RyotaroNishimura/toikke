@@ -15,7 +15,9 @@ class Post < ApplicationRecord
             },
             allow_nil: true
   validates :title, presence: true
-  validates :price, presence: true
+  validates :freeornot, presence: true
+  validates :unnko, presence: true
+  mount_uploader :image, ImageUploader
 
   def feed_comment(post_id)
     Comment.where("post_id = ?", post_id)

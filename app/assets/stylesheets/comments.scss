@@ -1,3 +1,24 @@
 // Place all the styles related to the Comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.title-comment {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.comments {
+  list-style: none;
+  li {
+    font-size: 14px;
+    padding: 10px 0;
+    border-top: 1px solid;
+    .comment {
+      font-size: 16px;
+    }
+  }
+}
+
+.comment-create-at {
+  color: grey;
+}

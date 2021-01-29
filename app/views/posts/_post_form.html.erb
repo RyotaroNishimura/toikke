@@ -2,24 +2,56 @@
   <%= render 'shared/error_messages', object: f.object %>
 
   <div class = 'form-group'>
-    <%= f.label :タイトル %> <span class="input-need">※必須</span>
+    <%= f.label :どこのトイレ（地域と建物など） %> <span class="input-need">※必須</span>
     <%= f.text_field :title, class: 'form-control', id: 'post_title' %>
   </div>
 
+  <% if @post.image? %>
+    <%= image_tag @post.image.url, class:"show_posts_img"  %>
+  <% else %>
+  <%= image_tag "/assets/posts.jpg", class:"show_posts_img" %>
+  <% end %>
+
+  <br>
+
+  <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png'%>
+
+
+  <p></p>
+
   <div class = 'form-group'>
-    <%= f.label :値段 %> <span class="input-need">※必須</span>
-    <%= f.text_field :price, class: 'form-control', id: 'post_price' %>
+    <%= f.label :トイレの住所 %><span class="input-unneed">※任意</span>
+    <%= f.text_field :adress, class: 'form-control', id: 'post_title' %>
+  </div>
+
+  <%= f.label :お金がかかるのか（コンビニは有料にチェック） %><span class="input-need">※必須</span>
+    <br>
+
+      <label><%= f.radio_button :freeornot, "1" %>無料</label>
+      <label><%= f.radio_button :freeornot, "2" %>有料</label>
+    <br>
+
+  <div class = 'form-group'>
+    <%= f.label :大便器の数 %><span class="input-need">※必須</span>
+    <%= f.select :unnko, [ ["1",1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6], ["7", 7], ["8", 8], ["9", 9], ["10", 10] ], prompt: "個数を入力してください", class: "form-control" %>
   </div>
 
   <div class = 'form-group'>
-    <%= f.label :人気度 %> [1-5] <span class="input-unneed">※任意</span>
-    <%= f.text_field :popularity, class: 'form-control', id: 'post_popularity' %>
+    <%= f.label :小便器の数（男性のみ） %></span>
+    <%= f.select :syoben, [ ["1",1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6], ["7", 7], ["8", 8], ["9", 9], ["10", 10] ], prompt: "個数を入力してください", class: "form-control" %>
   </div>
 
   <div class = 'form-group'>
-    <%= f.label :詳細 %> <span class="input-unneed">※任意</span>
-    <%= f.text_field :content, size: "30x4", class: 'form-control', id: 'post_content' %>
+    <%= f.label :きれい度 %> きれいが'5',汚いが'1' <span class="input-unneed">※任意</span>
+    <%= f.select :popularity, [ ["1",1], ["2", 2], ["3", 3], ["4", 4], ["5", 5] ], class: "form-control" %>
   </div>
+
+  <div class = 'form-group'>
+    <%= f.label :メモ %> <span class="input-unneed">※任意</span>
+    <%= f.text_area :content, size: "30x4", class: 'form-control', id: 'post_content' %>
+  </div>
+
+
 
   <%= f.submit nil, class: 'btn login-login' %>
 <% end %>
