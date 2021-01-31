@@ -1,28 +1,23 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.user-image img {
-  max-width: 100%;
-  height: auto;
-  box-sizing: border-box;
-}
-
-
-.user-image-box {
-  margin-top: 0.5em;
-  margin-left: 1em;
-}
-
-.show-user-name {
-  display: inline-block;
-}
 
 .account-edit {
   margin-top: 20px;
 }
 
 
-///プロフィール画像///
+.oowaku {
+  padding-top: 20px;
+  padding-left: 20px;
+  margin-left: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  height: 250px;
+  width:900px;
+}
+
+
 .profile_img {
   display: block;
   width: 200px;
@@ -39,7 +34,42 @@
   object-fit: cover;
 }
 
+.show-user-name {
+  display: inline-block;
+  margin-top: 30px;
+}
+
+.user-image img {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.user-show {
+  margin-left: 100px;
+}
+
+
+.user-image-box {
+  margin-top: 30px;
+  margin-left: 20%;
+}
+
 .u_i {
   width:500px;
   height:250px;
 }
+
+h4{
+  .show-user-sex {
+    margin-top: 10px;
+    margin-left: 25%;
+  }
+}
+
+
+
+///プロフィール画像///
+
+
+

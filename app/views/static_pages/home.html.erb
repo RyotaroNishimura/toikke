@@ -1,8 +1,8 @@
 <% if logged_in? %>
   <div class="container zentai">
     <div class="row">
-      <div class="col-md-9">
-        <h3>みんなの本(<%=@feed_items.count %>)</h3>
+        <h3 class="home_dai">投稿されたトイレ<%=@feed_items.count %>つ</h3>
+      <div class="col-md-12">
         <%= render 'shared/feed' %>
       </div>
     </div>

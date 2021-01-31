@@ -6,30 +6,28 @@
       <div class="user-image-box">
         <% if @user.image? %>
           <%= image_tag @user.image.url, class:"profile_show_img" %>
-        <% else %>
-          <%= image_tag "/assets/default.jpg", class:"profile_show_img" %>
         <% end %>
       </div>
       <h3 class="show-user-name"><%= @user.name %></h3>
       <% if @user.sex == 1 %>
-        <h4>男性</h4>
+        <h4 class="show-user-sex">男性</h4>
       <% else %>
-        <h4>女性</h4>
+        <h4 class="show-user-sex">女性</h4>
       <% end %>
       <section class="stats">
         <%= render 'shared/stats' %>
       </section>
       <% if current_user == @user %>
-        <div class="account-edit">
+        <div class="account-edit user_syo">
           <%= link_to "プロフィール編集", edit_user_path(@user) %>
         </div>
       <% end %>
       <%= render 'follow_form' if logged_in? %>
     </div>
 
-    <div class="col-md-7">
+    <div class="col-md-7 user-show">
       <% if @user.posts.any? %>
-        <h3 class="toukou_side">誰かのトイレを助けた数 <%= @user.posts.count %></h3>
+        <h3 class="toukou_side">誰かのトイレを助けた数 <%= @user.posts.count %>つ</h3>
         <div class="posts">
           <%= render @posts %>
         </div>
