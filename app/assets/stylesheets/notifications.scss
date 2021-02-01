@@ -1,14 +1,21 @@
 // Place all the styles related to the Notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.notifications {
-  list-style: none;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid
-  }
-}
 
 .notification-message {
   font-size: 16px;
+  color: #565656;
+}
+
+
+.noti_in {
+  border-bottom: 1px solid;
+  color: #565656;
+}
+.nofi_title {
+  color: #13b1c0;
+}
+
+.notifi_time {
+  color: #565656;
 }

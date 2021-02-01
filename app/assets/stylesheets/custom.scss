@@ -14,6 +14,7 @@ a {
 
 body {
   font-family: "Kosugi Maru";  /* フォントを指定 */
+  background-color: #f4f8fa;
 }
 
 
@@ -25,6 +26,7 @@ body {
   color: #13b1c0;
   width: 30px;
 }
+///ヘッダー///
 
 header{
   height: 70px;
@@ -32,6 +34,7 @@ header{
 
 .header-ul{
   list-style-type: none;
+  height: 70px;
 }
 
 .header-ul li {
@@ -39,11 +42,27 @@ header{
   margin-right: 6px;
 }
 
+
 .head-logo {
-  padding-top: 30px;
   font-size: 30px;
   color: #13b1c0;
-  margin-left: 18px;
+  margin-left: 20px;
+}
+
+.title{
+  font-size : 30px;
+  position: sticky;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.head_row {
+  background-color: #ffffff;
+  height: 80px;
+}
+
+.search {
+  width: 250px;
 }
 
 .home_dai {
@@ -85,16 +104,7 @@ input.font-awesome {
   margin: 30px 0 0 40px;
 }
 
-.profile.section {
-  margin-bottom:20px;
-  height: 320px;
-  width: 250px;
-}
 
-#recommend{
-  font-size : 30px;
-  position: sticky;
-}
 
 .toukou_side {
   margin-left: 40px;
@@ -113,13 +123,6 @@ input.font-awesome {
   color: #13b1c0;
 }
 
-
-
-
-
-
-
-
 section {
   overflow: auto;
 }
@@ -132,9 +135,10 @@ section {
 
 .form-group {
   padding: 10px;
+  height: 60px;
 }
 
-textarea {
+.textarea {
   resize: vertical;
 }
 
@@ -170,8 +174,6 @@ p{
 .timestamp_us {
   margin-left:0;
 }
-
-
 
 /// プロフィールページ ////
 

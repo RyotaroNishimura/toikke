@@ -1,10 +1,11 @@
-<div class="row">
-  <div class="col-md-12">
-    <h3>通知一覧</h3>
+<div class= "container zentai">
+  <div class="row">
+      <h3 class="noti_in">通知一覧</h3>
   </div>
+      <% if @notifications.present? %>
+        <div class="notifications">
+          <%= render @notifications %>
+        </div>
+      <% end %>
 </div>
-<% if @notifications.present? %>
-  <ol class="notifications">
-    <%= render @notifications %>
-  </ol>
-<% end %>
+
