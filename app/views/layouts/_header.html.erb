@@ -1,12 +1,13 @@
 <header>
   <div class="container">
-    <div class="row">
-      <div id="recommend">
-        <%= link_to root_path do %><i class="head-logo">recommend book</i><% end %>
-        <nav class="nav navbar-nav navbar-right">
+    <div class="row head_row">
+      <div class="col-md-3 title">
+        <%= link_to root_path do %><i class="head-logo">トイッケ</i><% end %>
+      </div>
+      <nav class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
           <ul class="header-ul">
-          <% if logged_in? %>
-            <li>
+            <li class="search">
               <%= render 'layouts/search' %>
             </li>
             <% if current_user.notification == true %>
@@ -48,16 +49,15 @@
             </li>
           </ul>
 
-          <% else %>
-            <li class="header-link">
-              <%= link_to login_path do %><span class="badge badge-pill">ログイン</span><% end %>
-            </li>
-            <li class="header-link">
+        <% else %>
+          <li class="header-link">
+            <%= link_to login_path do %><span class="badge badge-pill">ログイン</span><% end %>
+          </li>
+          <li class="header-link">
               <%= link_to signup_path do %><span class="badge badge-pill">登録</span><% end %>
-            </li>
-          <% end %>
-        </nav>
-      </div>
+          </li>
+        <% end %>
+      </nav>
     </div>
   </div>
 </header>

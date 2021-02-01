@@ -1,14 +1,26 @@
 <div class="row">
-  <aside class="col-md-4">
-    <h1><%= @user.name %></h1>
+  <aside class="col-md-2 follow_user">
+    <% if @user.image? %>
+      <%= image_tag @user.image.url, class:"profile_show_img" %>
+    <% else %>
+      <%= image_tag "/assets/default.jpg", class:"profile_show_img" %>
+    <% end %>
+    <h3 class="follow_name"><%= @user.name %></h3>
+    <div>
+      <% if @user.sex == 1 %>
+        <h4 class= follow_sex>男性</h4>
+      <% else %>
+        <h4 class="follow_sex">女性</h4>
+      <% end %>
+    </div>
     <span><%= link_to "プロフィール", @user %></span>
-    <span><b>投稿</b><%= @user.posts.count %></span>
+    <span><b>投稿数</b><%= @user.posts.count %>つ</span>
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
   </aside>
-  <div class="col-md-8">
-    <h3><%= @title %></h3>
+  <div class="col-md-6">
+    <h3 class="follow_title"><%= @title %></h3>
     <% if @users.any? %>
       <ul class="users follow">
         <%= render @users %>

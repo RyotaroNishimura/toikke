@@ -1,11 +1,12 @@
 <% provide(:title, "プロフィール") %>
 <div class="container zentai">
   <div class="row">
-
     <div class="col-md-3 profile section">
       <div class="user-image-box">
         <% if @user.image? %>
           <%= image_tag @user.image.url, class:"profile_show_img" %>
+        <% else %>
+          <%= image_tag "/assets/default.jpg", class:"profile_show_img" %>
         <% end %>
       </div>
       <h3 class="show-user-name"><%= @user.name %></h3>

@@ -3,10 +3,11 @@
     <div class="col-md-12">
       <h3> お気に入りしている数<%= @favorites.count %>つ</h3>
       <% if @favorites.present? %>
-        <ol class="favorites">
+        <div class="favorites">
           <%= render @favorites %>
-        </ol>
+        </div>
       <% end %>
+
     </div>
   </div>
 
