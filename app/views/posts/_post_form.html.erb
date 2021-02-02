@@ -46,12 +46,10 @@
     <%= f.select :popularity, [ ["1",1], ["2", 2], ["3", 3], ["4", 4], ["5", 5] ], class: "form-control" %>
   </div>
 
-  <div class = 'form-group'>
+
     <%= f.label :メモ %> <span class="input-unneed">※任意</span>
     <%= f.text_area :content, size: "30x4", class: 'form-control', id: 'post_content' %>
-  </div>
-
-
 
   <%= f.submit nil, class: 'btn login-login' %>
+
 <% end %>
