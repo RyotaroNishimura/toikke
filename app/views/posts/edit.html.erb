@@ -1,11 +1,11 @@
-<% provide(:title, "本の情報の編集") %>
-<div class="container zentai">
-  <h1 class="login">本の編集</h1>
+<% provide(:title, "トイレ情報の編集") %>
+<div class="container">
+  <h1 class="login_title">トイレ情報の編集</h1>
   <div class="row">
-    <div class="col-md-6 col-md-offset-3 section">
+    <div class="col-md-6 col-md-offset-3 section post_col">
     <%= render 'posts/post_form' %>
       <div class="ac-donhave">
-        <%= link_to "投稿を削除する", post_path(@post),   method: :delete, data: { confirm: "この投稿を削除してよろしいですか？" } %>
+        <%= link_to "投稿を削除する", post_path(@post),  method: :delete, data: { confirm: "この投稿を削除してよろしいですか？" }  %>
       </div>
     </div>
 

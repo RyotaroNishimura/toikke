@@ -61,6 +61,12 @@ header{
   height: 80px;
 }
 
+.search_title {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 100px;
+}
+
 .search {
   width: 250px;
 }
@@ -188,12 +194,6 @@ input {
 }
 
 
-.login  {
-  text-align: center;
-  font-size: 2.0em;
-  color: #13b1c0;
-}
-
 
 .login-login {
   color: white;
@@ -216,6 +216,7 @@ input {
   margin-top: 80px;
   opacity: 0.5;
   font-size: 0.7;
+  margin-bottom: 30px;
 }
 
 .ac-donhave a {
