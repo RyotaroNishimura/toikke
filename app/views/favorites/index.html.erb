@@ -1,15 +1,11 @@
-<div class="container zentai">
+<div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <h3> お気に入りしている数<%= @favorites.count %>つ</h3>
-      <% if @favorites.present? %>
-        <div class="favorites">
-          <%= render @favorites %>
-        </div>
-      <% end %>
-
-    </div>
+    <h3 class="favorite_title"> お気に入りしている数<%= @favorites.count %>つ</h3>
+    <% if @favorites.present? %>
+      <div class="favorites">
+        <%= render @favorites %>
+      </div>
+    <% end %>
   </div>
-
 </div>
 

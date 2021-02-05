@@ -99,4 +99,5 @@ class User < ApplicationRecord
   def favorite?(post)
     !Favorite.find_by(user_id: id, post_id: post.id).nil?
   end
+
 end

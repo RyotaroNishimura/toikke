@@ -2,21 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.account-edit {
-  margin-top: 20px;
+
+///show///
+.profile.section {
+  margin: 30px 30px 30px 50px;
+  text-align: center;
 }
 
+.account-edit {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
 .oowaku {
   padding-top: 20px;
   padding-left: 20px;
-  margin-left: 30px;
   margin-top: 20px;
   margin-bottom: 30px;
   height: 250px;
-  width:900px;
+  width:850px;
 }
-
 
 .profile_img {
   display: block;
@@ -45,10 +50,6 @@
   box-sizing: border-box;
 }
 
-.user-show {
-  margin-left: 100px;
-}
-
 
 .user-image-box {
   margin-top: 30px;
@@ -67,17 +68,49 @@ h4 {
   }
 }
 
-.profile.section {
-  margin-bottom:20px;
-  height: 320px;
-  width: 250px;
+
+.toukou_side {
+  color:  #13b1c0;
+}
+
+.user_edi_ti  {
   text-align: center;
+  font-size: 2.0em;
+  color: #13b1c0;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 
 
 
-///プロフィール画像///
+///show_follow///
+.follow_user {
+  background-color:  #ffffff;
+  text-align: center;
+  margin-left: 100px;
+  margin-right: 100px;
+  padding-top: 20px;
+  margin-top: 60px;
+
+}
 
 
+.follow_name {
+  color: #565656;
+}
 
+.follow_sex {
+  color:  #565656;
+}
+
+
+.users.follow {
+  padding: 0;
+  border-bottom: solid 1px #565656;
+}
+
+.follow_title {
+  color: #13b1c0;
+
+}
