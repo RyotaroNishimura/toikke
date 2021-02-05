@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = "投稿が作られました!"
+      flash[:info] = "投稿が作られました!"
       redirect_to root_url
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
@@ -33,7 +33,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update_attributes(post_params)
-      flash[:success] = "本の情報が更新されました!"
+      flash[:info] = "本の情報が更新されました!"
       redirect_to @post
     else
       render 'edit'
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if current_user.admin? || current_user?(@post.user)
       @post.destroy
-      flash[:success] = "投稿が削除されました!"
+      flash[:info] = "投稿が削除されました!"
       redirect_to request.referrer == user_url(@post.user) ? user_url(@post.user) : root_url
     else
       flash[:danger] = "他の人の投稿は削除できません"

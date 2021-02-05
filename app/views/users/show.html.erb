@@ -1,7 +1,7 @@
 <% provide(:title, "プロフィール") %>
 <div class="container zentai">
   <div class="row">
-    <div class="col-md-3 profile section">
+    <div class="col-md-2 profile section">
       <div class="user-image-box">
         <% if @user.image? %>
           <%= image_tag @user.image.url, class:"profile_show_img" %>
@@ -26,9 +26,11 @@
       <%= render 'follow_form' if logged_in? %>
     </div>
 
-    <div class="col-md-7 user-show">
+    <div class="col-md-9 user-show">
       <% if @user.posts.any? %>
-        <h3 class="toukou_side">誰かのトイレを助けた数 <%= @user.posts.count %>つ</h3>
+        <h3 class="toukou_side">
+          誰かのトイレを助けた数 <%= @user.posts.count %>つ
+        </h3>
         <div class="posts">
           <%= render @posts %>
         </div>

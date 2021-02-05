@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "recommend appへようこそ"
+      flash[:info] = "recommend appへようこそ"
       redirect_back_or @user
     else
       render 'new'
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "プロフィールのアップデートに成功しました"
+      flash[:info] = "プロフィールのアップデートに成功しました"
       redirect_to @user
     else
       render 'edit'
@@ -46,11 +46,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if current_user.admin?
       @user.destroy
-      flash[:success] = "ユーザーを削除しました"
+      flash[:info] = "ユーザーを削除しました"
       redirect_to users_url
     elsif current_user?(@user)
       @user.destroy
-      flash[:success] = "自分のアカウントを削除しました"
+      flash[:info] = "自分のアカウントを削除しました"
       redirect_to root_url
     else
       flash[:danger] = "他人のアカウントは削除できません"

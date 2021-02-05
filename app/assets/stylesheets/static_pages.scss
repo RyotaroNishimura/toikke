@@ -2,3 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.image-poji {
+  background-image: image-url('records/toronto.jpeg');
+  background-size: cover;
+  height: 420px;
+  width: 100%;
+  filter: opacity(70%);
+}
+
+
+.image-poji p {
+  position: absolute;
+  left: 40px;
+  top: 40%px;
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.nohome-top {
+  margin-top: 20px;
+}
+
+.nohome-top span{
+  width: 100%;
+  margin-bottom: 20px;
+}

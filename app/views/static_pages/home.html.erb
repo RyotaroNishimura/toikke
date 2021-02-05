@@ -1,7 +1,8 @@
 <% if logged_in? %>
   <div class="container zentai">
     <div class="row">
-      <div class="col-md-12">
+
+      <div>
         <h3 class="home_dai">投稿されたトイレ<%=@feed_items.count %>つ</h3>
         <%= render 'shared/feed' %>
       </div>
@@ -13,7 +14,7 @@
       <%= link_to "#" do %><span class="badge badge-pill">ゲストログイン</span><% end %>
     </div>
     <div class="image-poji">
-      <p>まだ知らない誰かに<br>あなたのおすすめの本を紹介しよう</p>
+      <p>やばい、知らない土地だけどトイレに行きたい！<br>急いでトイレを見つけたいならコレ！</p>
     </div>
     <div>
     </div>

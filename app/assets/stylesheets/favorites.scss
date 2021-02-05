@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 //お気に入り
+
+.favorite_title {
+  color:  #13b1c0;
+  margin-left: 100px;
+}
+
 .favorites {
   list-style: none;
   li {
@@ -20,4 +26,8 @@
 
 a.like, a.unlike {
   text-decoration: none;
+}
+
+.favorite_base {
+  margin-left: 50px;
 }
