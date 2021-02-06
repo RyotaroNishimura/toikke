@@ -1,7 +1,17 @@
 <% if @feed_items.any? %>
   <div class="posts">
-    <%= render @feed_items %>
+    <%= will_paginate @feed_items %>
   </div>
+  <h3 class="home_dai">投稿されたトイレ<%=@feed_items.count %>つ</h3>
+  <div class="row">
+    <div class="col-md-2">
 
-  <%= will_paginate @feed_items, params: { controller: :static_pages, action: :home }  %>
+    </div>
+    <div class="col-md-7">
+      <%= render @feed_items %>
+    </div>
+  </div>
+  <div>
+    <%= will_paginate @feed_items, params: { controller: :static_pages, action: :home }  %>
+  </div>
 <% end %>
