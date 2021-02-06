@@ -1,9 +1,24 @@
-<li>
-  <%= link_to user.name, user %>
-  <% if (current_user.admin? && current_user != user) || (!current_user.admin? && current_user == user) %>
-    | <%= link_to "アカウントの削除", user_path(user), method: :delete, data:
-    {
-      confirm: "本当に削除しますか？"
-    } %>
-  <% end %>
-</li>
+<% @user = user %>
+    <div>
+      <div class="user-image-box">
+        <% if user.image? %>
+          <%= image_tag @user.image.url, class:"profile_show_img" %>
+        <% else %>
+          <%= image_tag "/assets/default.jpg", class:"profile_show_img" %>
+        <% end %>
+      </div>
+      <h3 class="show-user-name"><%= user.name %></h3>
+      <% if user.sex == 1 %>
+        <h4 class="show-user-sex">男性</h4>
+      <% else %>
+        <h4 class="show-user-sex">女性</h4>
+      <% end %>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+      <% if current_user == user %>
+        <div class="account-edit user_syo">
+          <%= link_to "プロフィール編集", edit_user_path(@user) %>
+        </div>
+      <% end %>
+    </div>

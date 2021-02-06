@@ -2,16 +2,16 @@
   <div class="container zentai">
     <div class="row">
 
-      <div>
-        <h3 class="home_dai">投稿されたトイレ<%=@feed_items.count %>つ</h3>
-        <%= render 'shared/feed' %>
-      </div>
     </div>
+    <div>
+      <%= render 'shared/feed' %>
+    </div>
+
   </div>
 <% else %>
   <div class="container">
     <div class="nohome-top">
-      <%= link_to "#" do %><span class="badge badge-pill">ゲストログイン</span><% end %>
+
     </div>
     <div class="image-poji">
       <p>やばい、知らない土地だけどトイレに行きたい！<br>急いでトイレを見つけたいならコレ！</p>
@@ -22,6 +22,4 @@
   </div>
 
 <% end %>
-
-
 

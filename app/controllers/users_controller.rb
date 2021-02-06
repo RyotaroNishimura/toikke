@@ -21,8 +21,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:info] = "recommend appへようこそ"
-      redirect_back_or @user
+      flash[:info] = "トイッケへようこそ"
+      redirect_back_or root_path
     else
       render 'new'
     end
