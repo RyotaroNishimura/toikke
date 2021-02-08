@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 作成の理由
 
-Things you may want to cover:
+こんにちは！
+自分は現在23歳です。
+去年に大学を卒業し、その後１年間、今年の1月までカナダに留学に行っていました。
+元々お腹が弱かったということもあるのですが、カナダは日本よりもかなりトイレの数が少ないので毎回外出する際にはトイレの場所を必ず確認をしていました。
+さらに全然知らない土地だとトイレを探すのも一苦労です。だからトイレに行きたくなった時に検索してトイレがすぐに見つかるアプリがあればいいなと思ってトイッケを作りました。
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+# URL
 
-* Database initialization
 
-* How to run the test suite
+# 使用技術
+Ruby:2.6.5 , Rails:5.2.1
+webpacker(bootstrap4-reboot.css/fontawesome/scss/css/js/jQuery)
+nginx,puma(sockets通信)
+Rspec
 
-* Services (job queues, cache servers, search engines, etc.)
+# 機能一覧
+ログイン機能
+# 
 
-* Deployment instructions
 
-* ...
+# 
