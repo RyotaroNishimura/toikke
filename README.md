@@ -1,24 +1,48 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 作成の理由
 
-Things you may want to cover:
+こんにちは！
+自分は現在23歳です。
+去年に九州産業大学を卒業し、大学の頃に成績優秀者としていただいた奨学金を活用してカナダに１年間留学に行ってました。
 
-* Ruby version
+その留学中に一番心配になっていたことがトイレの問題です。
 
-* System dependencies
+元々お腹が弱かったということもあるのですが、カナダは日本よりもかなりトイレの数が少ないので毎回外出する際にはトイレの場所を必ず確認をしていました。さらに全然知らない土地だとトイレを探すのも一苦労です。
+また日本は綺麗なトイレが多いですがカナダではそんなことはなく、トイレによってかなり差があります。だからトイレに行きたくなった時に検索して、行きたいトイレがすぐに見つけることができるアプリがあればいいなと思ってトイッケを作りました。
 
-* Configuration
 
-* Database creation
+# URL
 
-* Database initialization
 
-* How to run the test suite
+# 大変だった点
+・わかる、理解するということと自分で考えながらコードをかくというところにすごく大きな壁があると感じました。ですが自分で考えながら1つ1つ正確にそして調べずに書くことができるコードが増えることがすごく自分のやる気につながりました。
 
-* Services (job queues, cache servers, search engines, etc.)
+・自分がトイレを探したいとなった時に爽やかな見た目になるようにしました。
 
-* Deployment instructions
 
-* ...
+# 使用技術
+Ruby:2.6.5 , Rails:5.2.1
+webpacker(bootstrap4/css/scss/css/js/jQuery)
+nginx,puma(sockets通信)
+Rspec
+
+# 機能一覧
+・ユーザーの作成、編集、削除機能
+・ログイン機能
+・トイレ投稿機編集、削除、新規作成
+・お気に入り、フォロー機能、コメント、通知機能
+・検索機能(ransack)
+・テストデーターの作成
+
+
+# これから改善していくところ
+・マップがあった方が使いやすいのでmapを導入する、そしてその時に正確な場所でなければユーザーが困ってしまうので正確な場所が表示されるようにする。
+
+・リファクタリンなどして他の人がみても直感的にわかりやいコードに改善する。
+
+・
+
+
+#
+

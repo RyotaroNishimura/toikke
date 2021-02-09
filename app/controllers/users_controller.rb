@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:info] = "トイッケへようこそ"
-      redirect_back_or root_path
+      redirect_back_or root
     else
       render 'new'
     end

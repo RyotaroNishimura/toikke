@@ -27,15 +27,8 @@
     </div>
 
     <div class="col-md-9 user-show">
-      <% if @user.posts.any? %>
-        <h3 class="toukou_side">
-          誰かのトイレを助けた数 <%= @user.posts.count %>つ
-        </h3>
-        <div class="posts">
-          <%= render @posts %>
-        </div>
-        <%= will_paginate @posts %>
-      <% end %>
+
+      <%= render partial: "show_posts", collection: @posts  %>
     </div>
   </div>
 </div>

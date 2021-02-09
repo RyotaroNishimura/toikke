@@ -20,6 +20,6 @@ class Post < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   def feed_comment(post_id)
-    Comment.where("post_id = ?", post_id)
+    Comment.where(post_id: post_id)
   end
 end
