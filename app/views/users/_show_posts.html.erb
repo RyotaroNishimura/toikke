@@ -1,44 +1,41 @@
   <div class="posts">
     <div class="col-md-7 section oowaku">
       <div class="col-md-4">
-        <% if post.image %>
+        <% if post.image? %>
           <%= image_tag post.image.url, class:"home_posts_img" %>
         <% else %>
           <%= image_tag "/assets/posts.jpg", class:"home_posts_img" %>
         <% end %>
       </div>
-    </div>
-    <div class="col-md-7 oowakunonaka">
+      <div class="col-md-7 oowakunonaka">
 
-      <div class="title_us">
-        <%= link_to post.title, post_path(post), class: "title_moji" %>のトイレ
-      </div>
+        <div class="title_us">
+          <%= link_to post.title, post_path(post), class: "title_moji" %>のトイレ
+        </div>
 
-      <% if post.adress %>
-        <h4 class="adress_us"><%= post.adress %></h4>
-      <% end %>
+        <% if post.adress %>
+          <h4 class="adress_us"><%= post.adress %></h4>
+        <% end %>
 
-      <% if post.freeornot == 1 %>
-        <h4 class="freeornot_us">無料で使用できます</h4>
-      <% else %>
-        <h4 class="freeornot_us">使用にお金がかかるかもしれません</h4>
-      <% end %>
+        <% if post.freeornot == 1 %>
+          <h4 class="freeornot_us">無料で使用できます</h4>
+        <% else %>
+          <h4 class="freeornot_us">使用にお金がかかるかもしれません</h4>
+        <% end %>
 
-      <% if post.unnko? %>
-        <h4 class="unnko_us">大便器の数は<%= post.unnko %>つです</h4>
-      <% end %>
+        <% if post.unnko %>
+          <h4 class="unnko_us">大便器の数は<%= post.unnko %>つです</h4>
+        <% end %>
 
-      <div class="timestamp_us">
-        <%= time_ago_in_words(post.created_at) %>前
-      </div>
+        <div class="timestamp_us">
+          <%= time_ago_in_words(post.created_at) %>前
+        </div>
 
-      <% if current_user.admin? || (current_user == post.user) %>
-        <%= link_to "削除", post_path(post), method: :delete,data: {  confirm: "本当に削除しますか？"
+        <% if current_user.admin? || (current_user == post.user) %>
+          <%= link_to "削除", post_path(post), method: :delete,data: {  confirm: "本当に削除しますか？"
                   } %>
-      <% end %>
-      <%= render 'users/favorite_form' %>
+        <% end %>
+      </div>
     </div>
-  <%= will_paginate @posts %>
   </div>
-
 </div>

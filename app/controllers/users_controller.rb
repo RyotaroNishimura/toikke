@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.paginate(page: params[:page], per_page: 5)
+    @posts = @user.posts
   end
 
   def new
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:info] = "トイッケへようこそ"
-      redirect_back_or root
+      redirect_back_or root_path
     else
       render 'new'
     end
