@@ -21,7 +21,8 @@
 }
 
 .nohome-top {
-  margin-top: 20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .nohome-top span{
@@ -29,3 +30,10 @@
   margin-bottom: 20px;
 }
 
+.guest_login {
+  display: block;
+  text-align: center;
+  background-color: #13b1c0;
+  color: #ffffff;
+  border-radius: 10px;
+}

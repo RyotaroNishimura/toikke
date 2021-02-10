@@ -27,8 +27,7 @@
     </div>
 
     <div class="col-md-9 user-show">
-
-      <%= render partial: "show_posts", collection: @posts  %>
+      <%= render partial: "show_posts", collection: @posts, as: :post  %>
     </div>
   </div>
 </div>
