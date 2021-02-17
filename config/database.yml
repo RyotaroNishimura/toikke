@@ -18,8 +18,8 @@ default: &default
   adapter: mysql2
   encoding: utf8
   username: root
-  password: ryouchin0729
-  socket: /tmp/mysql.sock
+  password: Ryouchin_0729
+  socket: /var/lib/mysql/mysql.sock
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -84,6 +84,7 @@ test:
 #
 production:
   <<: *default
-  database: recomend_app_production
-  username: recomend_app
-  password: <%= ENV['RECOMEND_APP_DATABASE_PASSWORD'] %>
+  database: recomend_app
+  username: root
+  password: Ryouchin_0729 
+  host:  
