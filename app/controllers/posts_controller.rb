@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:info] = "投稿が作られました!"
-      redirect_to users/show
+      redirect_to root_path
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
       render 'posts/new'
