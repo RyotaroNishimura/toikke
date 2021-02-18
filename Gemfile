@@ -17,6 +17,8 @@ gem 'bcrypt', '3.1.13'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 gem 'carrierwave'
+gem 'rmagick'
+gem 'fog-aws'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
