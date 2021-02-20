@@ -13,8 +13,8 @@ CarrierWave.configure do |config|
 
       provider: 'AWS',
       region: 'ap-northeast-1',
-      aws_access_key_id: 'AKIAYJZR3NNCUUEKTKXG',
-      aws_secret_access_key: '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'
+      aws_access_key_id: 'AKIAJUVNSRSITZ3ZZHAA',
+      aws_secret_access_key: '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'
     }
   else
     config.storage :file
