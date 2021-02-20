@@ -13,8 +13,8 @@ CarrierWave.configure do |config|
 
       provider: 'AWS',
       region: 'ap-northeast-1',
-      aws_access_key_id: 'AWS_ACCESS_KEY_ID',
-      aws_secret_access_key: 'AWS_SECRET_ACCESS_KEY'
+      aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     }
   else
     config.storage :file
