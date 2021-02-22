@@ -1,11 +1,13 @@
 FactoryBot.define do
   factory :post do
     association :user
-    title { "七つの週間" }
-    category { "政治" }
-    price { 1500 }
+    title { "浜田山" }
+    adress { "東京都杉並区浜田山3丁目" }
     popularity { 5 }
-    content { 'この本は私が大学生の頃に読んだ本です' }
+    freeornot { 1 }
+    unnko { 3 }
+    syoben { 5 }
+    content { 'トイレットペーパーが切れてた' }
   end
 
   trait :yesterday do
