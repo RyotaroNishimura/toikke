@@ -58,10 +58,11 @@ RSpec.describe "ユーザー", type: :system do
       it "有効なユーザーでユーザー登録を行うとユーザー登録成功のフラッシュが表示されること" do
         fill_in "名前", with: "Example User"
         fill_in "メールアドレス", with: "user@example.com"
+        fill_in "性別", with: 1
         fill_in "パスワード", with: "password"
         fill_in "パスワード(確認)", with: "password"
         click_button "登録"
-        expect(page).to have_content "recommend appへようこそ"
+        expect(page).to have_content "トイッケへようこそ"
       end
 
       it "無効なユーザーでユーザー登録を行うとユーザー登録失敗のフラッシュが表示されること" do
@@ -108,11 +109,12 @@ RSpec.describe "ユーザー", type: :system do
         Post.take(6).each do |post|
           expect(page).to have_link post.name
           expect(page).to have_content post.title
-          expect(page).to have_content post.category
+          expect(page).to have_content post.adress
           expect(page).to have_content post.user.name
-          expect(page).to have_content post.price
+          expect(page).to have_content post.unnko
+          expect(page).to have_content post.syoben
           expect(page).to have_content post.content
-          expect(page).to have_content post.popularity
+          expect(page).to have_content post.freeornot
         end
       end
 
@@ -295,6 +297,7 @@ RSpec.describe "ユーザー", type: :system do
       fill_in "メールアドレス", with: "edit-user@example.com"
       fill_in "パスワード", with: "Edit Example User"
       fill_in "パスワード(確認)", with: "Edit Example User"
+      fill_in "性別", with "1"
       click_button "変更を更新"
       expect(page).to have_content "プロフィールのアップデートに成功しました"
       expect(user.reload.name).to eq "Edit Example User"

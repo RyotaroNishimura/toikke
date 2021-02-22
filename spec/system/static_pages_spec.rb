@@ -12,7 +12,7 @@ RSpec.describe "スタティックページ", type: :system do
       end
 
       it "タイトルが正しく表示されていること" do
-        expect(page).to have_title('RecomendApp')
+        expect(page).to have_title('トイッケ')
       end
 
       context "投稿フィード", js: true do
@@ -27,7 +27,7 @@ RSpec.describe "スタティックページ", type: :system do
           login_for_system(user)
           create_list(:post, 6, user: user)
           visit root_path
-          expect(page).to have_content "みんなの本(#{user.posts.count})"
+          expect(page).to have_content "投稿されたトイレ(#{feed_items.count})"
           expect(page).to have_css "div.pagination"
           Post.take(5).each do |p|
             expect(page).to have_link p.title

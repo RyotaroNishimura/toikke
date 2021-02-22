@@ -13,47 +13,53 @@ RSpec.describe "投稿", type: :system do
     end
 
     context "ページレイアウト" do
-      it "「本の登録」の文字列が存在すること" do
-        expect(page).to have_content '本の登録'
+      it "「トイレ情報の作成」の文字列が存在すること" do
+        expect(page).to have_content 'トイレ情報の作成'
       end
 
       it "正しいタイトルが表示されること" do
-        expect(page).to have_title full_title('本の登録')
+        expect(page).to have_title full_title('トイレ情報の作成')
       end
 
       it "入力部分に適切なラベルが表示されること" do
-        expect(page).to have_content 'タイトル'
-        expect(page).to have_content 'カテゴリー'
-        expect(page).to have_content '値段'
-        expect(page).to have_content '人気度 [1~5]'
-        expect(page).to have_content '詳細'
+        expect(page).to have_content 'どこのトイレ（地域と建物など）'
+        expect(page).to have_content 'トイレの住所'
+        expect(page).to have_content 'お金がかかるのか（コンビニは有料にチェック）'
+        expect(page).to have_content '大便器の数'
+        expect(page).to have_content '小便器の数（男性のみ）'
+        expect(page).to have_content 'きれい度'
+        expect(page).to have_content 'メモ'
       end
     end
 
     context "本の登録処理" do
       it "有効な情報で本の登録を行うと本の登録成功のフラッシュが表示されること" do
-        fill_in "post[title]", with: "七つの習慣"
-        fill_in "post[category]", with: "政治"
-        fill_in "post[price]", with: 1500
+        fill_in "post[title]", with: "浜田山"
+        fill_in "post[adress]", with: "東京都杉並区浜田山3丁目"
+        fill_in "post[freeornot]", with: 1500
         fill_in "post[popularity]", with: 5
-        fill_in "post[content]", with: "この本は私が大学生の頃に読んだ本です"
+        fill_in "post[unnko]", with: 3
+        fill_in "post[syoben]", with: 5
+        fill_in "post[content]", with: "トイレットペーパーが切れてた"
         click_button "登録する"
         expect(page).to have_content "投稿が作られました!"
       end
 
       it "無効な情報で料理登録を行うと料理登録失敗のフラッシュが表示されること" do
-        fill_in "post[title]", with: ""
-        fill_in "post[category]", with: "政治"
-        fill_in "post[price]", with: 1500
+        fill_in "post[title]", with: "浜田山"
+        fill_in "post[adress]", with: "東京都杉並区浜田山3丁目"
+        fill_in "post[freeornot]", with: 1500
         fill_in "post[popularity]", with: 5
-        fill_in "post[content]", with: "初めて本を紹介した"
+        fill_in "post[unnko]", with: 3
+        fill_in "post[syoben]", with: 5
+        fill_in "post[content]", with: "トイレットペーパーが切れてた"
         click_button "登録する"
         expect(page).to have_content "Titleを入力してください"
       end
     end
   end
 
-  describe "本の詳細ページ" do
+  describe "トイレの詳細ページ" do
     context "ページレイアウト" do
       before do
         login_for_system(user)
@@ -64,12 +70,14 @@ RSpec.describe "投稿", type: :system do
         expect(page).to have_title full_title("#{post.title}")
       end
 
-      it "料理情報が表示されること" do
+      it "トイレの情報が表示されること" do
         expect(page).to have_content post.title
-        expect(page).to have_content post.category
-        expect(page).to have_content post.content
-        expect(page).to have_content post.price
+        expect(page).to have_content post.adress
+        expect(page).to have_content post.freeornot
+        expect(page).to have_content post.unnko
+        expect(page).to have_content post.syoben
         expect(page).to have_content post.popularity
+        expect(page).to have_content post.content
       end
     end
 
@@ -95,32 +103,38 @@ RSpec.describe "投稿", type: :system do
 
     context "ページレイアウト" do
       it "正しいタイトルが表示されること" do
-        expect(page).to have_title full_title('本の情報の編集')
+        expect(page).to have_title full_title('トイレの情報の編集')
       end
 
       it "入力部分に適切なラベルが表示されること" do
-        expect(page).to have_content 'タイトル'
-        expect(page).to have_content 'カテゴリー'
-        expect(page).to have_content '値段'
-        expect(page).to have_content '人気度'
-        expect(page).to have_content '詳細'
+        expect(page).to have_content 'どこのトイレ（地域と建物など）'
+        expect(page).to have_content 'トイレの住所'
+        expect(page).to have_content 'お金がかかるのか（コンビニは有料にチェック）'
+        expect(page).to have_content '大便器の数'
+        expect(page).to have_content '小便器の数（男性のみ）'
+        expect(page).to have_content 'きれい度'
+        expect(page).to have_content 'メモ'
       end
     end
 
-    context "本の更新処理" do
+    context "トイレ情報の更新処理" do
       it "有効な更新" do
-        fill_in "post[title]", with: "七つの週間"
-        fill_in "post[content]", with: "この本は私が大学生の頃に読んだ本です"
-        fill_in "post[category]", with: "政治"
-        fill_in "post[price]", with: 1500
+        fill_in "post[title]", with: "浜田山"
+        fill_in "post[adress]", with: "東京都杉並区浜田山3丁目"
+        fill_in "post[freeornot]", with: 1
+        fill_in "post[unnko]", with: 3
+        fill_in "post[syoben]", with: 5
         fill_in "post[popularity]", with: 5
+        fill_in "post[content]", with "トイレットペーパが補充されてた"
         click_button "更新する"
         expect(page).to have_content "本の情報が更新されました!"
-        expect(post.reload.title).to eq "七つの週間"
-        expect(post.reload.content).to eq "この本は私が大学生の頃に読んだ本です"
-        expect(post.reload.category).to eq "政治"
-        expect(post.reload.price).to eq 1500
+        expect(post.reload.title).to eq "浜田山"
+        expect(post.reload.adress).to eq "東京都杉並区浜田山3丁目"
+        expect(post.reload.freeornot).to eq 1
+        expect(post.reload.unnko).to eq 3
+        expect(post.reload.syoben).to eq 5
         expect(post.reload.popularity).to eq 5
+        expect(post.reload.content).to eq "トイレットペーパーが補充されてた"
       end
 
       it "無効な更新" do
@@ -196,34 +210,34 @@ RSpec.describe "投稿", type: :system do
       end
 
       it "フィードの中から検索ワードに該当する結果が表示されること" do
-        create(:post, title: '七つの習慣', user: user)
-        create(:post, title: '七つの大罪', user: other_user)
-        create(:post, title: '最後の晩餐', user: user)
-        create(:post, title: '最後の約束', user: other_user)
+        create(:post, title: '福岡天神地下南側', user: user)
+        create(:post, title: '福岡天神地下北側', user: other_user)
+        create(:post, title: '博多駅筑紫口', user: user)
+        create(:post, title: '博多駅博多口', user: other_user)
 
-        fill_in 'q_name_cont', with: '七つ'
+        fill_in 'q_name_cont', with: '天神'
         click_button '検索'
-        expect(page).to have_css 'h3', text: "”七つ”の検索結果：1件"
+        expect(page).to have_css 'h3', text: "”天神”の検索結果：1件"
         within find('.posts') do
           expect(page).to have_css 'li', count: 1
         end
-        fill_in 'q_name_cont', with: '最後'
+        fill_in 'q_name_cont', with: '博多'
         click_button '検索'
-        expect(page).to have_css 'h3', text: "”最後”の検索結果：1件"
+        expect(page).to have_css 'h3', text: "”博多”の検索結果：1件"
         within find('.posts') do
           expect(page).to have_css 'li', count: 1
         end
 
         user.follow(other_user)
-        fill_in 'q_name_cont', with: '七つ'
+        fill_in 'q_name_cont', with: '天神'
         click_button '検索'
-        expect(page).to have_css 'h3', text: "”七つ”の検索結果：2件"
+        expect(page).to have_css 'h3', text: "”天神”の検索結果：2件"
         within find('.posts') do
           expect(page).to have_css 'li', count: 2
         end
-        fill_in 'q_name_cont', with: '最後'
+        fill_in 'q_name_cont', with: '博多'
         click_button '検索'
-        expect(page).to have_css 'h3', text: "”最後”の検索結果：2件"
+        expect(page).to have_css 'h3', text: "”博多”の検索結果：2件"
         within find('.posts') do
           expect(page).to have_css 'li', count: 2
         end
