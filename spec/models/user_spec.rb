@@ -33,6 +33,12 @@ RSpec.describe User, type: :model do
     end
   end
 
+  it "性別がなければ無効であること" do
+    user = build(:user, sex: nil)
+    user.valid?
+    expect(user.errors[:sex]).to include ('を入力してください')
+  end
+
   it "メールアドレスを小文字にした後の値が大文字を混ぜて登録されたメールアドレスと同じかどうか" do
     user.email = "User1@Example.com"
     user.save!

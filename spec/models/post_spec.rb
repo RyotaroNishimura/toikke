@@ -29,16 +29,16 @@ RSpec.describe Post, type: :model do
       expect(post.errors[:user_id]).to include("を入力してください")
     end
 
-    it "値段がなければ無効な状態であること" do
-      post = build(:post, price: nil)
+    it "無料か有料かがなければ無効な状態であること" do
+      post = build(:post, freeornot: nil)
       post.valid?
-      expect(post.errors[:price]).to include("を入力してください")
+      expect(post.errors[:freeornot]).to include("を入力してください")
     end
 
-    it "カテゴリーがなければ無効な状態であること" do
-      post = build(:post, category: nil)
+    it "大便がなければ無効な状態であること" do
+      post = build(:post, unnko: nil)
       post.valid?
-      expect(post.errors[:category]).to include("を入力してください")
+      expect(post.errors[:unnko]).to include("を入力してください")
     end
 
     it "人気度が1以上でなければ無効な状態であること" do
