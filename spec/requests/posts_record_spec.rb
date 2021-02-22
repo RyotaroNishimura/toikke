@@ -20,7 +20,7 @@ RSpec.describe "本の登録", type: :request do
       expect {
         post posts_path, params: {
           post: {
-            title: "七つの習慣", category: "政治", price: 1500, popularity: 5, content: "この本は私が大学生の頃に読んだ本です"
+            title: "浜田山", address: "東京都杉並区浜田山3丁目", freeornot: 1, unnko: 3,syoben: 5, popularity: 5, content: "トイレットペーパーが切れていた"
           }
         }
       }.to change(Post, :count).by(1)

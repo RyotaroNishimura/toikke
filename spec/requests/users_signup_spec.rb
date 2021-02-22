@@ -13,6 +13,7 @@ RSpec.describe "新規登録", type: :request do
     expect {
       post users_path, params: { user: { name: "Example User",
                                          email: "user@example.com",
+                                         sex: 1,
                                          password: "password",
                                          password_confirmation: "password" } }
     }.to change(User, :count).by(1)
@@ -26,6 +27,7 @@ RSpec.describe "新規登録", type: :request do
       post users_path, params: { user: { name: "",
                                          email: "user@example.com",
                                          password: "password",
+                                         sex: 1,
                                          password_confirmation: "pass" } }
     }.not_to change(User, :count)
   end

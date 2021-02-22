@@ -6,7 +6,7 @@ RSpec.describe "投稿", type: :system do
   let!(:post) { create(:post, user: user) }
   let!(:comment) { create(:comment, user_id: user.id, post: post) }
 
-  describe "本の登録ページ" do
+  describe "トイレ情報の登録ページ" do
     before do
       login_for_system(user)
       visit new_post_path

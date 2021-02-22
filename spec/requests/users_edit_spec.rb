@@ -11,6 +11,7 @@ RSpec.describe "プロフィール編集", type: :request do
       expect(response).to redirect_to edit_user_url(user)
       patch user_path(user), params: { user: { name: "Example User",
                                                email: "user@example.com",
+                                               sex: 1,
                                                password: "password",
                                                password_confirmation: "password" } }
       redirect_to user

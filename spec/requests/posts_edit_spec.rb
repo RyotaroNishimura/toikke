@@ -12,7 +12,7 @@ RSpec.describe "投稿編集", type: :request do
       expect(response).to redirect_to edit_post_url(new_post)
       patch post_path(new_post), params: {
         post: {
-          title: "七つの習慣", category: "政治", price: 1500, popularity: 5, content: "初めて本を紹介した"
+          title: "浜田山", address: "東京都杉並区浜田山3丁目", freeornot: 1, unnko: 3,syoben: 5, popularity: 5, content: "トイレットペーパーが切れていた"
         }
       }
       redirect_to new_post
@@ -28,7 +28,7 @@ RSpec.describe "投稿編集", type: :request do
       expect(response).to redirect_to login_path
       patch post_path(new_post), params: {
         post: {
-          title: "七つの習慣", category: "政治", price: 1500, popularity: 5, content: "初めて本を紹介した"
+          title: "浜田山", address: "東京都杉並区浜田山3丁目", freeornot: 1, unnko: 3,syoben: 5, popularity: 5, content: "トイレットペーパーが切れていた"
         }
       }
       expect(response).to have_http_status "302"
@@ -44,7 +44,7 @@ RSpec.describe "投稿編集", type: :request do
       expect(response).to redirect_to root_path
       patch post_path(new_post), params: {
         post: {
-          title: "七つの習慣", category: "政治", price: 1500, popularity: 5, content: "初めて本を紹介した"
+          title: "浜田山", address: "東京都杉並区浜田山3丁目", freeornot: 1, unnko: 3,syoben: 5, popularity: 5, content: "トイレットペーパーが切れていた"
         }
       }
       expect(response).to have_http_status "302"
