@@ -18,7 +18,7 @@ default: &default
   adapter: mysql2
   encoding: utf8
   username: root
-  password: ryouchin0729
+  password: Ryouchin_0729
   socket: /var/lib/mysql/mysql.sock
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
