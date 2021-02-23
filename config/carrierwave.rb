@@ -3,7 +3,7 @@ require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'
 
 CarrierWave.configure do |config|
-  if Rails.env.production?
+  #if Rails.env.production?
     config.storage :fog
     config.fog_provider = 'fog/aws'
     config.fog_directory  = 'toikkern'
@@ -16,7 +16,7 @@ CarrierWave.configure do |config|
       region: 'ap-northeast-1',
       path_style: true
     }
-  else
-    config.storage :file
-  end
+  #else
+    #config.storage :file
+  #end
 end
