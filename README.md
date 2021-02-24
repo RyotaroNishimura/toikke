@@ -5,6 +5,7 @@ README.md
 ![1AC7C1FB-CC57-4546-98E4-0F550DA7E3C0_1_105_c](https://user-images.githubusercontent.com/65130181/107905445-9b49bb00-6f1c-11eb-9ba6-f766960d4d5a.jpeg)
 
 ## URL
+http://18.182.138.190/
 
 
 ## 作った理由
@@ -57,7 +58,7 @@ README.md
 * Rubocop
 
 ### 本番環境
-* AWS(VPC, EC2)
+* AWS(VPC, EC2, IAM, S3)
 * Nginx, Unicron
 
 ### 開発環境
@@ -67,7 +68,7 @@ README.md
 ![179BF5D5-A062-488F-AE8B-228B31D49429](https://user-images.githubusercontent.com/65130181/107879903-9992df80-6ea9-11eb-8a67-10cdd40b7ad2.jpeg)
 
 ### インフラ構成
-![99D2F7C0-CAB4-4D13-941D-43BFE740B0F2](https://user-images.githubusercontent.com/65130181/107879852-559fda80-6ea9-11eb-8618-a99ee28cfc2b.jpeg)
+![5F690938-3CCB-4235-A361-E3AF4AD7EF0F](https://user-images.githubusercontent.com/65130181/108999022-bb415300-766f-11eb-9b43-2e5dae9cb8cc.jpeg)
 
 ## 今後の課題
 * マップを用いてユーザーがよりトイレを見つけやすくする機能の導入
