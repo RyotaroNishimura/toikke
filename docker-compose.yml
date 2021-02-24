@@ -3,7 +3,7 @@ services:
   db:
     image: mysql:5.7.8
     environment:
-      - MYSQL_ROOT_PASSWORD=ryouchin0729
+      - MYSQL_ROOT_PASSWORD=Ryouchin_0729
     volumes:
       - datavol:/var/lib/mysql
       - ./mysql-confd:/etc/conf.d
