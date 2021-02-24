@@ -68,7 +68,7 @@ http://18.182.138.190/
 ![179BF5D5-A062-488F-AE8B-228B31D49429](https://user-images.githubusercontent.com/65130181/107879903-9992df80-6ea9-11eb-8a67-10cdd40b7ad2.jpeg)
 
 ### インフラ構成
-![5F690938-3CCB-4235-A361-E3AF4AD7EF0F](https://user-images.githubusercontent.com/65130181/108999022-bb415300-766f-11eb-9b43-2e5dae9cb8cc.jpeg)
+![78A94257-F670-4B11-A22C-5239938BE06A](https://user-images.githubusercontent.com/65130181/108999620-8bdf1600-7670-11eb-8689-f6c0733fdbd9.jpeg)
 
 ## 今後の課題
 * マップを用いてユーザーがよりトイレを見つけやすくする機能の導入
