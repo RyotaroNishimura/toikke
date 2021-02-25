@@ -1,6 +1,7 @@
 <% provide(:title, "プロフィール") %>
 <div class="container zentai">
   <div class="row">
+
     <div class="col-md-2 profile section">
       <div class="user-image-box">
         <% if @user.image? %>
@@ -29,5 +30,6 @@
     <div class="col-md-9 user-show">
       <%= render partial: "show_posts", collection: @posts, as: :post  %>
     </div>
+
   </div>
 </div>
