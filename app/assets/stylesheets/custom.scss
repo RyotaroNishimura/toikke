@@ -18,6 +18,10 @@ body {
 }
 
 
+.title {
+  display: inline-block;
+}
+
 .container {
   width: 100%;
 }
@@ -30,6 +34,8 @@ body {
 
 header{
   height: 70px;
+  border-bottom: 5px solid #E5E5E5;
+  height: 100px;
 }
 
 .header-ul{
@@ -47,19 +53,24 @@ header{
   font-size: 30px;
   color: #13b1c0;
   margin-left: 20px;
-}
-
-.title{
-  font-size : 30px;
-  position: sticky;
+  display: inline-block;
   margin-top: 10px;
-  margin-left: 20px;
 }
 
-.head_row {
-  background-color: #ffffff;
-  height: 80px;
-  border-bottom: 5px solid #E5E5E5;
+.head_nav {
+  float: right;
+}
+
+
+.header-link {
+  float: left;
+  margin-top: 10px;
+  margin-right: 30px;
+}
+
+.header-before-login{
+  float: right;
+  margin-top: 10px;
 }
 
 .search_title {
@@ -70,6 +81,10 @@ header{
 
 .search {
   width: 250px;
+}
+
+@media screen and (max-width: 896px) {
+  .search { display:none; }
 }
 
 .home_dai {
