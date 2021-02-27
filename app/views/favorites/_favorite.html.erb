@@ -1,17 +1,15 @@
 <% @post = Post.find(favorite.post_id) %>
 <% user = @post.user %>
-<li id="favorite-<%= favorite.id %>">
-  <div class="row favorite-post">
-    <div class="col-md-10 favorite_base">
-      <div class="section oowaku">
-        <div class="col-md-4">
+  <div class="row">
+    <div class="section favorite_waku">
+        <div class="favorite_base">
           <% if @post.image? %>
             <%= image_tag @post.image.url, class:"home_posts_img" %>
           <% else %>
             <%= image_tag "/assets/posts.jpg", class:"home_posts_img" %>
           <% end %>
         </div>
-        <div class="col-md-8 oowakunonaka">
+        <div class="oowakunonaka">
 
           <div class="title_us"><%= link_to @post.title, post_path(@post), class: "title_moji" %>のトイレ</div>
 
@@ -44,5 +42,4 @@
       </div>
     </div>
   </div>
-</li>
 
