@@ -34,7 +34,7 @@
           </div>
 
           <% if current_user.admin? || (current_user == @post.user) %>
-            <%= link_to "削除", post_path(post), method: :delete,data: {
+            <%= link_to "削除", root_path, method: :delete,data: {
               confirm: "本当に削除しますか？"
             } %>
           <% end %>

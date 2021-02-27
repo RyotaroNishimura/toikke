@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-2 profile section">
+    <div class="col-md-3 profile section">
       <div class="user-image-box">
         <% if @user.image? %>
           <%= image_tag @user.image.url, class:"profile_show_img" %>
@@ -26,10 +26,15 @@
       <% end %>
       <%= render 'follow_form' if logged_in? %>
     </div>
+    <div class="col-md-8">
+      <h3 class="user_show_count">
+        投稿されたトイレ<%=@feed_items.count %>つ
+      </h3>
+      <% if @feed_items.any? %>
+        <%= render partial: "show_posts", collection: @posts, as: :post  %>
 
-    <div class="col-md-9">
-      <%= render partial: "show_posts", collection: @posts, as: :post  %>
+        <%= will_paginate @feed_items, params: { controller: :users, action: :show }  %>
+      <% end %>
     </div>
-
   </div>
 </div>
