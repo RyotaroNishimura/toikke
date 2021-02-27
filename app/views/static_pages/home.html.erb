@@ -1,12 +1,9 @@
 <% if logged_in? %>
-  <div class="container zentai">
-    <div class="row">
-
-    </div>
-    <div>
-      <%= render 'shared/feed' %>
-    </div>
-
+  <div class="container">
+    <h3 class="home_dai">
+      投稿されたトイレ<%=@feed_items.count %>つ
+    </h3>
+    <%= render 'shared/feed' %>
   </div>
 <% else %>
   <div class="container">

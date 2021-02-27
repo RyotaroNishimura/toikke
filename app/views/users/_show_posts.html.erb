@@ -1,13 +1,10 @@
   <div class="posts">
-    <div class="col-md-7 section oowaku">
-
-      <div class="col-md-4">
-        <% if post.image? %>
-          <%= image_tag post.image.url, class:"home_posts_img" %>
-        <% else %>
-          <%= image_tag "/assets/posts.jpg", class:"home_posts_img" %>
-        <% end %>
-      </div>
+    <div class="col-md-7 section show_posts_post">
+      <% if post.image? %>
+        <%= image_tag post.image.url, class:"home_posts_img" %>
+      <% else %>
+        <%= image_tag "/assets/posts.jpg", class:"home_posts_img" %>
+      <% end %>
 
       <div class="col-md-7 oowakunonaka">
         <div class="title_us">

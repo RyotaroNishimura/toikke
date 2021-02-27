@@ -3,7 +3,7 @@
 
   <div class = 'form-group'>
     <%= f.label :どこのトイレ（地域と建物など） %> <span class="input-need">※必須</span>
-    <%= f.text_field :title, class: 'form-control', id: 'post_title' %>
+    <%= f.text_field :title, class: 'form-control' %>
   </div>
 
   <% if @post.image? %>
@@ -21,7 +21,7 @@
 
   <div class = 'form-group'>
     <%= f.label :トイレの住所 %><span class="input-unneed">※任意</span>
-    <%= f.text_field :adress, class: 'form-control', id: 'post_title' %>
+    <%= f.text_field :adress, class: 'form-control' %>
   </div>
 
   <%= f.label :お金がかかるのか（コンビニは有料にチェック） %><span class="input-need">※必須</span>

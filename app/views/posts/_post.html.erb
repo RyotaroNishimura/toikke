@@ -1,12 +1,13 @@
 <% @post = post  %>
+<div class="container">
 <div class="row">
-  <div id="post-<%= post.id %>">
+  <div id="post_zentai">
     <div class="col-md-2 _post_back">
       <div class="user-image-box">
         <% if post.user.image? %>
-          <%= image_tag post.user.image.url, class:"profile_show_img" %>
+          <%= image_tag post.user.image.url, class:"profile_static_img" %>
         <% else %>
-          <%= image_tag "/assets/default.jpg", class:"profile_show_img" %>
+          <%= image_tag "/assets/default.jpg", class:"profile_static_img" %>
         <% end %>
       </div>
       <h3 class="_post_name"><%= post.user.name %></h3>
@@ -16,15 +17,18 @@
         <h4 class="_post_sex">女性</h4>
       <% end %>
     </div>
-    <div class="col-md-7 section oowaku">
-      <div class="col-md-4">
+
+
+    <div class="col-md-8 section oowaku">
+      <div class="image_post">
         <% if @post.image? %>
-          <%= image_tag @post.image.url, class:"home_posts_img" %>
+          <%= image_tag @post.image.url, class:"post_posts_img" %>
         <% else %>
-          <%= image_tag "/assets/posts.jpg", class:"home_posts_img" %>
+          <%= image_tag "/assets/posts.jpg", class:"post_posts_img" %>
         <% end %>
       </div>
-      <div class="col-md-7 oowakunonaka">
+
+      <div class="moji_post">
 
         <div class="title_us"><%= link_to post.title, post_path(post), class: "title_moji" %>のトイレ</div>
 
@@ -56,7 +60,9 @@
       </div>
 
     </div>
+
   </div>
+</div>
 </div>
 
 
