@@ -24,9 +24,9 @@ class User < ApplicationRecord
   class_name: "Relationship",
   foreign_key: "followed_id",
   dependent: :destroy
-
+  #active_relationshipsは中間テーブル
   has_many :following, through: :active_relationships, source: :followed
-
+  #passive_relationshipsは中間テーブル
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :favorites, dependent: :destroy
 

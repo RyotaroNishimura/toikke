@@ -14,19 +14,24 @@
         <% else %>
           <li class="no_notification header-link">
         <% end %>
-
-        <%= link_to notifications_path do %>
-          <i class="fas fa-bell"></i>
+        <li>
+          <%= link_to notifications_path do %>
+            <i class="fas fa-bell"></i>
+        </li>
         <% end %>
 
         </li>
 
         <li>
-          <%= link_to favorites_path do %><i class="fas fa-heart"></i><% end %>
+          <%= link_to favorites_path do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
         </li>
 
         <li>
-          <%= link_to new_post_path do %><i class="fas fa-plus"></i><% end %>
+          <%= link_to new_post_path do %>
+            <i class="fas fa-plus"></i>
+          <% end %>
         </li>
 
         <li class= "dropdown">
