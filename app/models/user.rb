@@ -36,19 +36,15 @@ class User < ApplicationRecord
 
 
 
-  def User.digest(string)
+  def self.digest(password)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
     BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost: cost)
-  end
-
-  def User.new_token
-    SecureRandom.urlsafe_base64
+    BCrypt::Password.create(password, cost: cost)
   end
 
   def remember
-    self.remember_token = User.new_token
-    update_attribute(:remember_digest, User.digest(remember_token))
+    self.remember_token = SecureRandom.urlsafe_base64
+    update_attribute(:remember_digest, self.digest(remember_token))
   end
 
   def authenticated?(attribute, token)
@@ -86,14 +82,6 @@ class User < ApplicationRecord
 
   def followed_by?(other_user)
     followers.include?(other_user)
-  end
-
-  def favorite(post)
-    Favorite.create!(user_id: id, post_id: post.id)
-  end
-
-  def unfavorite(post)
-    Favorite.find_by(user_id: id, post_id: post.id).destroy
   end
 
   def favorite?(post)
