@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post '/login', to:'sessions#create'
   delete '/logout', to:'sessions#destroy'
   get :favorites, to: 'favorites#index'
-  resources :post do
+  resources :posts do
     resource :favorite
   end
   resources :users do
@@ -19,9 +19,6 @@ Rails.application.routes.draw do
   end
   ##
 
-
-
-  resources :posts
   resources :relationships, only:[:create, :destroy]
   resources :comments, only: [:create, :destroy]
   resources :notifications, only: :index
