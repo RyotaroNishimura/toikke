@@ -6,12 +6,16 @@ Rails.application.routes.draw do
   post '/login', to:'sessions#create'
   delete '/logout', to:'sessions#destroy'
   get :favorites, to: 'favorites#index'
-  post "favorites/:post_id/create" => "favorites#create"
-  delete "favorites/:post_id/destroy" => "favorites#destroy"
+  resources :post do
+    resource :favorite
+  end
   resources :users do
     member do
       get :following, :followers
     end
+  end
+  resource :posts do
+    get :favorites, on: :collection
   end
 
 

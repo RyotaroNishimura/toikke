@@ -4,7 +4,9 @@ class FavoritesController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @user = @post.user
-    current_user.favorite(@post)
+    if current_user
+      @favorite = Favorite.create(user_id: current_user.id, post_id: @post.id)
+    end
     respond_to do |format|
       format.html { redirect_to request.referrer || root_url }
       format.js
@@ -22,11 +24,14 @@ class FavoritesController < ApplicationController
 
   def destroy
     @post = Post.find(params[:post_id])
-    current_user.favorites.find_by(post_id: @post.id).destroy
-      respond_to do |format|
-        format.html { redirect_to request.referrer || root_url }
-        format.js
-      end
+    if current_user
+      @unfavorite = Favorite.find_by(user_id: current_user.id, post_id: @post.id).destroy
+    end
+
+    respond_to do |format|
+      format.html { redirect_to request.referrer || root_url }
+      format.js
+    end
   end
 
   def index
