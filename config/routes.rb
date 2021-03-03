@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   resource :posts do
     get :favorites, on: :collection
   end
-  ##
 
   resources :relationships, only:[:create, :destroy]
   resources :comments, only: [:create, :destroy]
