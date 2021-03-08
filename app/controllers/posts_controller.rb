@@ -44,7 +44,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if current_user.admin? || current_user?(@post.user)
-      @post.destroy
+      @post.delete
       flash[:info] = "投稿が削除されました!"
       redirect_to request.referrer == user_url(@post.user) ? user_url(@post.user) : root_url
     else
